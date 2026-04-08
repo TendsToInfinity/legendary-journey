@@ -1,0 +1,36 @@
+{
+    "swagger": {
+        "outputDirectory": "./dist",
+        "entryFile": "./src/main.ts",
+        "basePath": "/",
+        "title": "Catalog Service",
+        "description": "This contains the API endpoint for the Tablet Catalog",
+        "version": "1.0.0",
+        "consumes": [
+            "application/json"
+        ],
+        "produces": [
+            "application/json"
+        ],
+        "securityDefinitions": {
+            "inmateJwt": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            },
+            "corpJwt": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            },
+            "apiKey": {
+                "type": "apiKey",
+                "name": "X-API-KEY",
+                "in": "header"
+            }
+        }
+    },
+    "ignore": [
+        "**/node_modules/@types/js-yaml/**"
+    ]
+}

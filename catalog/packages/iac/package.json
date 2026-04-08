@@ -1,0 +1,32 @@
+{
+  "name": "iac",
+  "version": "15.0.1",
+  "description": "Catalog infrastructure managed by pulumi",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "yarn run -T tsc -b -v",
+    "clean": "yarn run -T rimraf dist/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pulumi/aws": "^6.24.2",
+    "@pulumi/awsx": "^2.21.0",
+    "@pulumi/pulumi": "^3.147.0",
+    "@securustablets/libraries.pulumi": "^7.14.0",
+    "cron-parser": "^4.7.1",
+    "dedent": "^0.7.0",
+    "dotenv": "^16.0.3",
+    "envsafe": "^2.0.3",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
+    "luxon": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/dedent": "^0.7.0",
+    "@types/js-yaml": "^4.0.5"
+  }
+}

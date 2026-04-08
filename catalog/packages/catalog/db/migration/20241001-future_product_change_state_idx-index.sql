@@ -1,0 +1,1 @@
+CREATE INDEX CONCURRENTLY IF NOT EXISTS future_product_change_state_idx ON future_product_change (lower(state));

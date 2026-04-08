@@ -1,0 +1,1 @@
+DROP INDEX IF EXISTS dpv_genre_update_idx;

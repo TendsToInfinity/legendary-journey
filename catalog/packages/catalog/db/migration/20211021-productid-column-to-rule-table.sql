@@ -1,0 +1,1 @@
+ALTER TABLE rule ADD COLUMN IF NOT EXISTS product_id INT REFERENCES product (product_id) ON DELETE CASCADE;

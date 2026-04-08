@@ -1,0 +1,48 @@
+input:
+  backend: envalid
+  require:
+  - module: ./packages/iac/src/environment
+    export: cliValidators
+  - module: ./packages/iac/src/environment
+    export: validators
+
+generate:
+  header:
+    name: Configuration
+    description: |
+      This application is configured through environment variables, as shown below.
+
+      Configuration loading using [dotenv](https://github.com/motdotla/dotenv) is supported.
+      This means, for persistent configuration, you can create a file `.env` in the root of the source tree with your configurations.
+      The location of this file may be changed by setting `DOTENV_CONFIG_PATH`.
+  subheaders:
+  - name: Global Configuration
+    regex: '^(?!PULUMI_)^(?!AURORA_)^(?!ECS_)^(?!ALB_)^(?!ELASTICACHE_)^(?!OPENSEARCH_)^(?!SECRET_)^(?!SHARED_)^(?!NODE_CONFIG_)^(?!VPC_)'
+  - name: Pulumi Configuration
+    regex: '^PULUMI_'
+  - name: Aurora Configuration
+    regex: '^AURORA_(?!AUTOSCALING_)'
+  - name: Aurora Autoscaling Configuration
+    regex: '^AURORA_AUTOSCALING_'
+  - name: ECS Service Configuration
+    regex: '^ECS_SERVICE_(?!AUTOSCALING_)'
+  - name: ECS Service Autoscaling Configuration
+    regex: '^ECS_SERVICE_AUTOSCALING_'
+  - name: ECS Task Configuration
+    regex: '^ECS_TASK'
+  - name: ALB Configuration
+    regex: '^ALB_'
+  - name: Elasticache Configuration
+    regex: '^ELASTICACHE_'
+  - name: Opensearch Configuration
+    regex: '^OPENSEARCH_'
+  - name: Secret Configuration
+    regex: '^SECRET_'
+  - name: Shared Infrastructure Configuration
+    regex: '^SHARED_'
+  - name: NODE_CONFIG Configuration
+    regex: '^NODE_CONFIG_'
+  - name: VPC Configuration
+    regex: '^VPC_'
+output:
+  file: README.md

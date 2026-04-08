@@ -1,0 +1,14 @@
+.eslintrc.js
+.yarn
+.vscode
+*.tsbuildinfo
+*.mjs
+coverage
+.nyc_output/*
+junit_combined/*
+reports/*
+**/dist
+**/out
+*.json
+*.yml
+*.md
