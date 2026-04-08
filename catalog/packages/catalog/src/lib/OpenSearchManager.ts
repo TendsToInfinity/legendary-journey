@@ -67,22 +67,10 @@ export class OpenSearchManager {
       });
     }
 
-    const pageSize = search.pageSize || 25;
-    const pageNumber = search.pageNumber || 0;
-
-    if (pageSize <= 0 || pageNumber < 0) {
-      throw Exception.InvalidData({
-        errors: 'Invalid pagination values. pageSize must be > 0 and pageNumber must be >= 0.',
-      });
-    }
-
-    const from = pageSize * pageNumber;
-    const resultWindow = from + pageSize;
-
-    if (resultWindow > 10000) {
+    if (search.pageSize * search.pageNumber > 10000) {
       throw Exception.InvalidData({
         errors:
-          'Requested page exceeds OpenSearch result window (10,000). Please refine filters or use a scroll-based query.',
+          'Too many records requested. Please refine your search criteria.',
       });
     }
   }
