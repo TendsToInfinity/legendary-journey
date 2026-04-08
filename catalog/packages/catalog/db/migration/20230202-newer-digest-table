@@ -1,0 +1,24 @@
+DROP TABLE IF EXISTS digest;
+CREATE TABLE digest (
+  product_id                BIGINT PRIMARY KEY,
+  product_type_id           TEXT NOT NULL,
+  is_dirty                  BOOLEAN DEFAULT FALSE,
+  available_globally        BOOLEAN,
+  whitelist                 TEXT[] DEFAULT ARRAY[]::TEXT[],
+  blacklist                 TEXT[] DEFAULT ARRAY[]::TEXT[],
+  subscription_product_ids  BIGINT[] DEFAULT ARRAY[]::BIGINT[],
+  version                   INT DEFAULT 0,
+  cdate                     TIMESTAMPTZ,
+  udate                     TIMESTAMPTZ
+);
+CREATE TRIGGER create_digest_timestamp BEFORE INSERT ON digest FOR EACH ROW EXECUTE PROCEDURE create_timestamp();
+CREATE TRIGGER update_digest_timestamp BEFORE UPDATE ON digest FOR EACH ROW EXECUTE PROCEDURE update_timestamp();
+CREATE TRIGGER digest_version BEFORE UPDATE ON digest FOR EACH ROW EXECUTE PROCEDURE check_version_and_increment();
+
+DROP TABLE IF EXISTS product_rule;
+CREATE TABLE product_rule (
+    product_id BIGINT,
+    rule_id INT
+);
+
+CREATE INDEX product_rule_id_idx ON product_rule (product_id, rule_id);

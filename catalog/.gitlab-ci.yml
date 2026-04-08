@@ -1,0 +1,26 @@
+variables:
+  IMAGE: gitlab-ci/nodejs:20
+  DOCKER_COMPOSE_TEST_COMMAND: /wait && yarn workspace catalog-task db:init && yarn integration-test
+
+include:
+  project: tablet_platform/ucc-devops/gitlab-ci-templates
+  file: /yarn-monorepo/v3/gitlab-ci.yml
+
+mutation:
+  tags:
+  - $IMAGE
+  - ec2-large
+
+integration-test:
+  timeout: 5 hours
+  tags:
+    - $IMAGE
+    - ec2-large
+
+deploy:
+  extends: .deploy
+  trigger:
+    project: tablet_platform/ucc-devops/environments/dev
+  variables:
+    DEPLOY_APP: services.catalog
+    DEPLOY_CHANNEL: latest

@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS digest;
+DROP TABLE IF EXISTS product_rule;

@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS product_type_id_idx ON product((document->>'productTypeId'));

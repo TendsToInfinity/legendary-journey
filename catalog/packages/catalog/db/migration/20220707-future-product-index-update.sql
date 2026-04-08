@@ -1,0 +1,2 @@
+DROP INDEX IF EXISTS future_vendor_product_id_date_idx;
+CREATE INDEX IF NOT EXISTS future_vendor_product_id_date_lower_idx ON future_product_change (lower(vendor_product_id), lower(product_type_id), lower(vendor_name), action_date);

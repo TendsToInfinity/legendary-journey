@@ -1,0 +1,9 @@
+reporter: mocha-multi-reporters
+reporterOptions:
+- configFile=../../.mocha-multi-reporters.itest.json
+require: ts-node/register
+spec:
+- test/integration/**/*.spec.ts
+exit: true
+timeout: 10000
+slow: 3000
