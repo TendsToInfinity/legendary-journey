@@ -1,0 +1,1 @@
+CREATE INDEX CONCURRENTLY IF NOT EXISTS pti_music_subscription_rule_idx ON product((document->>'productTypeId'), (document->'source'->>'availableForSubscription'), (document->'source'->>'parentLabelName'), (document->'meta'->>'releaseYear'), product_id);

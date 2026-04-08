@@ -1,0 +1,5 @@
+-- Adds a field 'cameraRequired' to existing APK products
+UPDATE product
+SET document = jsonb_set(document, '{meta,cameraRequired}', 'false':: jsonb, true)
+WHERE (document ->> 'productTypeId') = 'apk'
+AND (document -> 'meta' -> 'cameraRequired') IS NULL;
