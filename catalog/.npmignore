@@ -1,0 +1,7 @@
+.nyc_output/
+coverage/
+reports/
+test/
+**/test/
+**/*spec.ts
+**/*spec.js

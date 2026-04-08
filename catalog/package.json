@@ -1,0 +1,77 @@
+{
+  "name": "services.catalog",
+  "version": "15.0.1",
+  "description": "Catalog Service",
+  "private": true,
+  "author": "James Brooks",
+  "license": "ISC",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "commitlint": "commitlint-range --from-last-release",
+    "build": "yarn workspaces foreach -Avpt run build",
+    "clean": "yarn workspaces foreach -Avpt run clean",
+    "docs": "envdoc",
+    "lint": "eslint --quiet .",
+    "format": "prettier --check .",
+    "fix-format": "prettier --check --write .",
+    "unit-test": "cross-env NODE_ENV=test NODE_CONFIG_DIR=./packages/catalog/config nyc mocha",
+    "integration-test": "yarn workspace catalog-task run -T mocha --config ../../.mocharc.itest.yml",
+    "mutation": "cross-env NODE_ENV=test NODE_CONFIG_DIR=./packages/catalog/config stryker run",
+    "semantic-release": "semantic-release",
+    "refresh": "yarn workspace iac exec tpl --prepare --refresh",
+    "diff": "yarn workspace iac exec tpl --prepare --diff",
+    "deploy": "yarn workspace iac exec tpl --prepare --deploy --lambda bootstrap migrate"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "publishConfig": {
+    "registry": "http://mi-nexus02.dal.securustech.net:8081/repository/tablets-npm/"
+  },
+  "resolutions": {
+    "@types/lodash": "4.14.182",
+    "@types/express": "4.17.21",
+    "@opentelemetry/semantic-conventions": "1.24.1",
+    "@types/express-serve-static-core": "4.17.43",
+    "@types/node": "^24.10.13",
+    "@types/bluebird": "3.5.37",
+    "@types/express-unless": "0.5.3",
+    "@aws-sdk/nested-clients": "~3.933",
+    "config": "^4.4.1",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@securustablets/libraries.commitlint-config": "^1.1.0",
+    "@securustablets/libraries.semantic-release-config": "^2.8.0",
+    "@securustablets/libraries.semantic-release-plugins": "^1.9.0",
+    "@securustablets/libraries.utils-test": "^6.0.0",
+    "@securustablets/tools.commitlint-range": "^1.0.2",
+    "@securustablets/tools.envdoc": "1.0.0-alpha.9",
+    "@securustablets/tools.semantic-publish": "^1.0.0-beta.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/gitlab": "^10",
+    "@stryker-mutator/core": "^8.2.6",
+    "@stryker-mutator/mocha-runner": "^8.2.6",
+    "@types/eslint": "^8",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^24.10.13",
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "@typescript-eslint/parser": "^7.8.0",
+    "conventional-changelog-conventionalcommits": "^9.1.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8",
+    "mocha": "^10.0.0",
+    "mocha-junit-reporter": "^2.0.2",
+    "mocha-multi-reporters": "^1.5.1",
+    "nyc": "^15.1.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "semantic-release": "^24",
+    "ts-node": "^10.9.2",
+    "typescript": "5.9.3"
+  },
+  "packageManager": "yarn@4.8.1"
+}

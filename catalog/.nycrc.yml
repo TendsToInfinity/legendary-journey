@@ -1,0 +1,25 @@
+all: true
+check-coverage: true
+statements: 100
+branches: 100
+functions: 100
+lines: 100
+extension:
+  - .ts
+reporter:
+  - text
+  - text-summary
+  - html
+  - clover
+  - cobertura
+report-dir: ./reports/coverage
+include:
+  - "packages/**/*.ts"
+  - '!packages/iac/**/*'
+  - "!packages/catalog/db/**/*.ts"
+  - "!packages/catalog/src/**/models/**/*.ts"
+  - "!packages/catalog/src/assets/*"
+  - "!packages/catalog/src/batch.ts"
+  - "!packages/catalog/src/CatalogService.ts"
+  - "!packages/catalog/src/controllers/TestController.ts"
+  - "!packages/catalog/src/main.ts"

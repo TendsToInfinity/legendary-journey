@@ -1,0 +1,8932 @@
+{
+  "Accessory": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "accessory"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "accessory"
+      },
+      "purchaseCode": {
+        "type": "string",
+        "const": "ACCESSORY"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string",
+            "const": "purchase"
+          }
+        ],
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "fulfillmentType": {
+        "type": "string",
+        "const": "physical"
+      },
+      "subscribable": {
+        "const": false,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "description": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "categories": {
+            "autoComplete": true,
+            "distinctValue": "meta.categories",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "basePrice": {
+            "requiredIfActive": true,
+            "type": "object",
+            "properties": {
+              "purchase": {
+                "autoComplete": true,
+                "distinctValue": "meta.basePrice.purchase",
+                "keyField": true,
+                "type": "number"
+              }
+            },
+            "required": [
+              "purchase"
+            ]
+          },
+          "disclaimer": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "sku": {
+            "requiredIfActive": true,
+            "keyField": true,
+            "type": "string"
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "fulfillmentType",
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseCode",
+      "purchaseTypes",
+      "source",
+      "status"
+    ]
+  },
+  "Album": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "album"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "music"
+      },
+      "purchaseCode": {
+        "type": "string",
+        "const": "MUSIC"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string",
+            "const": "purchase"
+          }
+        ],
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "fulfillmentType": {
+        "type": "string",
+        "const": "digital"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "subscribable": {
+        "const": false,
+        "type": "boolean"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorName": {
+            "keyField": true,
+            "type": "string"
+          },
+          "vendorProductId": {
+            "keyField": true,
+            "type": "string"
+          },
+          "vendorArtistId": {
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          },
+          "ingestionBatchId": {
+            "type": "string"
+          },
+          "contentFeedVersion": {
+            "type": "string"
+          },
+          "wholesalePrice": {
+            "type": "string"
+          },
+          "msrp": {
+            "keyField": true,
+            "type": "string"
+          },
+          "upcs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "assetCode": {
+            "type": "string"
+          },
+          "parentLabelCode": {
+            "type": "string"
+          },
+          "parentLabelName": {
+            "keyField": true,
+            "type": "string"
+          },
+          "albumArtUrl": {
+            "type": "string"
+          },
+          "copyright": {
+            "type": "string"
+          },
+          "genres": {
+            "distinctValue": "meta.genres",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "availableForSubscription": {
+            "type": "boolean"
+          },
+          "availableForPurchase": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "msrp",
+          "productTypeId",
+          "vendorArtistId",
+          "vendorName",
+          "vendorProductId",
+          "wholesalePrice"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "subTitle": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "genres": {
+            "autoComplete": true,
+            "requiredIfActive": true,
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "categories": {
+            "autoComplete": true,
+            "distinctValue": "meta.categories",
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "length": {
+            "keyField": true,
+            "type": "number"
+          },
+          "basePrice": {
+            "type": "object",
+            "properties": {
+              "purchase": {
+                "keyField": true,
+                "autoComplete": true,
+                "distinctValue": "meta.basePrice.purchase",
+                "requiredIfActive": true,
+                "type": "number"
+              }
+            },
+            "required": [
+              "purchase"
+            ]
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "releaseDate": {
+            "keyField": true,
+            "type": "string"
+          },
+          "explicit": {
+            "type": "boolean"
+          },
+          "artists": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "vendorArtistId": {
+                  "type": "string"
+                },
+                "vendorName": {
+                  "type": "string"
+                },
+                "rank": {
+                  "type": "string"
+                },
+                "sortKey": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "name",
+                "rank",
+                "role",
+                "sortKey",
+                "vendorArtistId",
+                "vendorName"
+              ]
+            }
+          },
+          "rendition": {
+            "type": "string"
+          },
+          "thumbnailApproved": {
+            "type": "string"
+          },
+          "releaseYear": {
+            "distinctValue": "meta.releaseYear",
+            "autoComplete": true,
+            "type": "number"
+          }
+        },
+        "required": [
+          "artists",
+          "name"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "fulfillmentType",
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseCode",
+      "purchaseTypes",
+      "source",
+      "status"
+    ]
+  },
+  "Apk": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "apk"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "apk"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string",
+            "const": "purchase"
+          }
+        ],
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "purchaseCode": {
+        "type": "string",
+        "const": "APK"
+      },
+      "fulfillmentType": {
+        "type": "string",
+        "const": "digital"
+      },
+      "subscribable": {
+        "const": false,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "autoComplete": true,
+            "distinctValue": "meta.category",
+            "keyField": true,
+            "pattern": "^[a-z]+$",
+            "type": "string"
+          },
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "androidClass": {
+            "keyField": true,
+            "type": "string"
+          },
+          "appManagementAllowed": {
+            "type": "boolean"
+          },
+          "privilegedApp": {
+            "type": "boolean"
+          },
+          "systemApp": {
+            "type": "boolean"
+          },
+          "basePrice": {
+            "type": "object",
+            "properties": {
+              "purchase": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "purchase"
+            ]
+          }
+        },
+        "required": [
+          "androidClass",
+          "appManagementAllowed",
+          "category",
+          "name",
+          "privilegedApp",
+          "systemApp"
+        ]
+      },
+      "postInstallCommand": {
+        "type": "string"
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "type": "string"
+          },
+          "vendorParentProductId": {
+            "type": "string"
+          },
+          "vendorArtistId": {
+            "type": "string"
+          },
+          "s3Path": {
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "fulfillmentType",
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseCode",
+      "purchaseTypes",
+      "status"
+    ]
+  },
+  "Artist": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "artist"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "music"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "subscribable": {
+        "const": false,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "purchaseCode": {
+        "type": "string"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "fulfillmentType": {
+        "type": "string"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "source",
+      "status"
+    ]
+  },
+  "Device": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "device"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "device"
+      },
+      "purchaseCode": {
+        "const": "TABLETDEVICE",
+        "type": "string"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string",
+            "const": "purchase"
+          }
+        ],
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "fulfillmentType": {
+        "type": "string",
+        "const": "physical"
+      },
+      "subscribable": {
+        "const": false,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "modelNumber": {
+            "autoComplete": true,
+            "distinctValue": "meta.modelNumber",
+            "keyField": true,
+            "type": "string"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "features": {
+            "type": "object",
+            "properties": {
+              "camera": {
+                "type": "boolean"
+              },
+              "fmReceiver": {
+                "type": "boolean"
+              }
+            }
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "basePrice": {
+            "type": "object",
+            "properties": {
+              "purchase": {
+                "autoComplete": true,
+                "distinctValue": "meta.basePrice.purchase",
+                "keyField": true,
+                "type": "number"
+              }
+            },
+            "required": [
+              "purchase"
+            ]
+          }
+        },
+        "required": [
+          "modelNumber",
+          "name"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "type": "string"
+          },
+          "vendorParentProductId": {
+            "type": "string"
+          },
+          "vendorArtistId": {
+            "type": "string"
+          },
+          "s3Path": {
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "fulfillmentType",
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "status"
+    ]
+  },
+  "Ebook": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "ebook"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "book"
+      },
+      "purchaseCode": {
+        "type": "string",
+        "const": "EBOOK"
+      },
+      "fulfillmentType": {
+        "type": "string",
+        "const": "digital"
+      },
+      "subscribable": {
+        "const": false,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "keyField": true,
+            "type": "string"
+          },
+          "vendorName": {
+            "keyField": true,
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          },
+          "purchaseTypes": {
+            "type": "array",
+            "items": [
+              {
+                "type": "string",
+                "const": "purchase"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1
+          },
+          "url": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "format",
+          "language",
+          "productTypeId",
+          "purchaseTypes",
+          "url",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "authors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "genre": {
+            "autoComplete": true,
+            "requiredIfActive": true,
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "categories": {
+            "autoComplete": true,
+            "distinctValue": "meta.categories",
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "basePrice": {
+            "requiredIfActive": true,
+            "type": "object",
+            "properties": {
+              "purchase": {
+                "autoComplete": true,
+                "distinctValue": "meta.basePrice.purchase",
+                "keyField": true,
+                "type": "number"
+              }
+            },
+            "required": [
+              "purchase"
+            ]
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "fulfillmentType",
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseCode",
+      "source",
+      "status"
+    ]
+  },
+  "RuleSets": {
+    "type": "object",
+    "additionalProperties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ruleId": {
+            "type": "number"
+          },
+          "customerId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "siteId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "productTypeId": {
+            "type": "string"
+          },
+          "productId": {
+            "type": [
+              "null",
+              "number"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "product_type_availability",
+              "product_availability",
+              "product_price",
+              "product_cache",
+              "product_subscription_availability"
+            ]
+          },
+          "clauses": {},
+          "action": {},
+          "enabled": {
+            "type": "boolean"
+          },
+          "cdate": {
+            "type": "string"
+          },
+          "udate": {
+            "type": "string"
+          },
+          "version": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "action",
+          "clauses",
+          "enabled",
+          "name",
+          "productTypeId",
+          "type"
+        ]
+      }
+    }
+  },
+  "Rule": {
+    "type": "object",
+    "properties": {
+      "ruleId": {
+        "type": "number"
+      },
+      "customerId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "siteId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "productId": {
+        "type": [
+          "null",
+          "number"
+        ]
+      },
+      "name": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "product_type_availability",
+          "product_availability",
+          "product_price",
+          "product_cache",
+          "product_subscription_availability"
+        ]
+      },
+      "clauses": {},
+      "action": {},
+      "enabled": {
+        "type": "boolean"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "version": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "action",
+      "clauses",
+      "enabled",
+      "name",
+      "productTypeId",
+      "type"
+    ]
+  },
+  "ProductTypeAvailabilityRule": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "const": "product_type_availability"
+      },
+      "clauses": {
+        "type": "object",
+        "properties": {}
+      },
+      "action": {
+        "type": "object",
+        "properties": {
+          "available": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "available"
+        ]
+      },
+      "ruleId": {
+        "type": "number"
+      },
+      "customerId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "siteId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "productId": {
+        "type": [
+          "null",
+          "number"
+        ]
+      },
+      "name": {
+        "type": "string"
+      },
+      "enabled": {
+        "type": "boolean"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "version": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "action",
+      "clauses",
+      "enabled",
+      "name",
+      "productTypeId",
+      "type"
+    ]
+  },
+  "ProductAvailabilityRule": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "const": "product_availability"
+      },
+      "clauses": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "action": {
+        "type": "object",
+        "properties": {
+          "available": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "available"
+        ]
+      },
+      "ruleId": {
+        "type": "number"
+      },
+      "customerId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "siteId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "productId": {
+        "type": [
+          "null",
+          "number"
+        ]
+      },
+      "name": {
+        "type": "string"
+      },
+      "enabled": {
+        "type": "boolean"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "version": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "action",
+      "clauses",
+      "enabled",
+      "name",
+      "productTypeId",
+      "type"
+    ]
+  },
+  "ProductCacheRule": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "const": "product_cache"
+      },
+      "clauses": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "action": {
+        "type": "object",
+        "properties": {
+          "cache": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "cache"
+        ]
+      },
+      "ruleId": {
+        "type": "number"
+      },
+      "customerId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "siteId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "productId": {
+        "type": [
+          "null",
+          "number"
+        ]
+      },
+      "name": {
+        "type": "string"
+      },
+      "enabled": {
+        "type": "boolean"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "version": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "action",
+      "clauses",
+      "enabled",
+      "name",
+      "productTypeId",
+      "type"
+    ]
+  },
+  "ProductPriceRule": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "const": "product_price"
+      },
+      "clauses": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "action": {
+        "type": "object",
+        "properties": {
+          "meta": {
+            "type": "object",
+            "properties": {
+              "effectivePrice": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "effectivePrice"
+            ]
+          }
+        },
+        "required": [
+          "meta"
+        ]
+      },
+      "ruleId": {
+        "type": "number"
+      },
+      "customerId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "siteId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "productId": {
+        "type": [
+          "null",
+          "number"
+        ]
+      },
+      "name": {
+        "type": "string"
+      },
+      "enabled": {
+        "type": "boolean"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "version": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "action",
+      "clauses",
+      "enabled",
+      "name",
+      "productTypeId",
+      "type"
+    ]
+  },
+  "ProductSubscriptionAvailabilityRule": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "const": "product_subscription_availability"
+      },
+      "clauses": {
+        "type": "object",
+        "properties": {}
+      },
+      "action": {
+        "type": "object",
+        "properties": {
+          "available": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "available"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "ruleId": {
+        "type": "number"
+      },
+      "customerId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "siteId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "enabled": {
+        "type": "boolean"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "version": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "action",
+      "clauses",
+      "enabled",
+      "name",
+      "productId",
+      "productTypeId",
+      "type"
+    ]
+  },
+  "RuleType": {
+    "type": "string",
+    "enum": [
+      "product_type_availability",
+      "product_availability",
+      "product_price",
+      "product_cache",
+      "product_subscription_availability"
+    ]
+  },
+  "RuleContext": {
+    "type": "object",
+    "properties": {
+      "customerId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "siteId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "isGlobal": {
+        "type": "boolean"
+      },
+      "productId": {
+        "type": [
+          "null",
+          "number"
+        ]
+      }
+    },
+    "required": [
+      "customerId",
+      "isGlobal",
+      "productId",
+      "siteId"
+    ]
+  },
+  "RuleSet": {
+    "description": "Represents a group of rules with the same context",
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string"
+      },
+      "rules": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "ruleId": {
+              "type": "number"
+            },
+            "customerId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "siteId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "productTypeId": {
+              "type": "string"
+            },
+            "productId": {
+              "type": [
+                "null",
+                "number"
+              ]
+            },
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "product_type_availability",
+                "product_availability",
+                "product_price",
+                "product_cache",
+                "product_subscription_availability"
+              ]
+            },
+            "clauses": {},
+            "action": {},
+            "enabled": {
+              "type": "boolean"
+            },
+            "cdate": {
+              "type": "string"
+            },
+            "udate": {
+              "type": "string"
+            },
+            "version": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "action",
+            "clauses",
+            "enabled",
+            "name",
+            "productTypeId",
+            "type"
+          ]
+        }
+      },
+      "context": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "siteId": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "isGlobal": {
+            "type": "boolean"
+          },
+          "productId": {
+            "type": [
+              "null",
+              "number"
+            ]
+          }
+        },
+        "required": [
+          "customerId",
+          "isGlobal",
+          "productId",
+          "siteId"
+        ]
+      }
+    },
+    "required": [
+      "context",
+      "productTypeId",
+      "rules"
+    ]
+  },
+  "SharedRuleSet": {
+    "description": "Represents a set of rules that are identical except for context",
+    "type": "object",
+    "properties": {
+      "ruleIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "clauses": {},
+      "enabled": {
+        "type": "boolean"
+      },
+      "action": {},
+      "contexts": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "customerId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "siteId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "isGlobal": {
+              "type": "boolean"
+            },
+            "productId": {
+              "type": [
+                "null",
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "customerId",
+            "isGlobal",
+            "productId",
+            "siteId"
+          ]
+        }
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "productIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "customerIds": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "siteIds": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "action",
+      "clauses",
+      "contexts",
+      "enabled",
+      "productTypeId",
+      "ruleIds"
+    ]
+  },
+  "Digest": {
+    "description": "A Per-Product digested product availability rule set\nTracks rules that match the product (ruleIds)\nTracks available globally (whitelisted or no rules at global level = true, blacklisted at global level = false)\nTracks customer ids with white or blacklist matches for this product\nTracks site ids with white or blacklist matches for this product\nTracks subscription product ids that contain this product",
+    "type": "object",
+    "properties": {
+      "productId": {
+        "type": "number"
+      },
+      "ruleIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "availableGlobally": {
+        "type": "boolean"
+      },
+      "whitelist": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "blacklist": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "subscriptionProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "priceOverrides": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "purchaseType": {
+              "type": "string"
+            },
+            "effectivePrice": {
+              "type": "number"
+            },
+            "customerId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "siteId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "isGlobal": {
+              "type": "boolean"
+            },
+            "productId": {
+              "type": [
+                "null",
+                "number"
+              ]
+            }
+          },
+          "required": [
+            "customerId",
+            "effectivePrice",
+            "isGlobal",
+            "productId",
+            "purchaseType",
+            "siteId"
+          ]
+        }
+      },
+      "sales": {
+        "description": "Total sales counts to facilitate OpenSearch result sorting",
+        "type": "object",
+        "properties": {
+          "totalSales": {
+            "type": "number"
+          }
+        }
+      },
+      "version": {
+        "type": "number"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "availableGlobally",
+      "blacklist",
+      "productId",
+      "ruleIds",
+      "sales",
+      "subscriptionProductIds",
+      "whitelist"
+    ]
+  },
+  "PriceOverride": {
+    "type": "object",
+    "properties": {
+      "purchaseType": {
+        "type": "string"
+      },
+      "effectivePrice": {
+        "type": "number"
+      },
+      "customerId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "siteId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "isGlobal": {
+        "type": "boolean"
+      },
+      "productId": {
+        "type": [
+          "null",
+          "number"
+        ]
+      }
+    },
+    "required": [
+      "customerId",
+      "effectivePrice",
+      "isGlobal",
+      "productId",
+      "purchaseType",
+      "siteId"
+    ]
+  },
+  "Sales": {
+    "description": "Total sales counts to facilitate OpenSearch result sorting",
+    "type": "object",
+    "properties": {
+      "totalSales": {
+        "type": "number"
+      }
+    }
+  },
+  "OrderPurchaseType": {
+    "type": "string",
+    "enum": [
+      "subscription",
+      "purchase",
+      "rental"
+    ]
+  },
+  "OrderState": {
+    "type": "string",
+    "enum": [
+      "complete",
+      "finished"
+    ]
+  },
+  "OrderProduct": {
+    "type": "object",
+    "properties": {
+      "productId": {
+        "type": "number"
+      },
+      "productType": {
+        "type": "string"
+      },
+      "productTypeGroupId": {
+        "type": "string"
+      },
+      "price": {
+        "type": "number"
+      },
+      "parentProductId": {
+        "type": "number"
+      },
+      "name": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "price",
+      "productId",
+      "productType",
+      "productTypeGroupId"
+    ]
+  },
+  "Order": {
+    "type": "object",
+    "properties": {
+      "orderId": {
+        "type": "number"
+      },
+      "parentOrderId": {
+        "type": "number"
+      },
+      "state": {
+        "type": "string",
+        "enum": [
+          "complete",
+          "finished"
+        ]
+      },
+      "isActive": {
+        "type": "boolean"
+      },
+      "customerId": {
+        "type": "string"
+      },
+      "siteId": {
+        "type": "string"
+      },
+      "inmateId": {
+        "type": "string"
+      },
+      "custodyAccount": {
+        "type": "string"
+      },
+      "callPartyId": {
+        "type": "string"
+      },
+      "purchaseType": {
+        "type": "string",
+        "enum": [
+          "subscription",
+          "purchase",
+          "rental"
+        ]
+      },
+      "product": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "number"
+          },
+          "productType": {
+            "type": "string"
+          },
+          "productTypeGroupId": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "parentProductId": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "price",
+          "productId",
+          "productType",
+          "productTypeGroupId"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "cdate",
+      "customerId",
+      "isActive",
+      "product",
+      "purchaseType",
+      "siteId",
+      "state",
+      "udate"
+    ]
+  },
+  "ProductStatus": {
+    "type": "string",
+    "enum": [
+      "PendingReview",
+      "Active",
+      "Deleted",
+      "Reingest",
+      "Inactive"
+    ]
+  },
+  "VendorNames": {
+    "type": "string",
+    "enum": [
+      "Audible Magic",
+      "swank"
+    ]
+  },
+  "ProductTypeIds": {
+    "type": "string",
+    "enum": [
+      "accessory",
+      "album",
+      "apk",
+      "artist",
+      "device",
+      "ebook",
+      "ebookSubscription",
+      "game",
+      "gameSubscription",
+      "movie",
+      "musicSubscription",
+      "newsStand",
+      "tabletPackage",
+      "track",
+      "tvEpisode",
+      "tvShow"
+    ]
+  },
+  "Extensions": {
+    "type": "string",
+    "enum": [
+      "mp3",
+      "mp4"
+    ]
+  },
+  "IntervalUnit": {
+    "type": "string",
+    "enum": [
+      "days",
+      "weeks",
+      "months"
+    ]
+  },
+  "ProductSource": {
+    "type": "object",
+    "additionalProperties": {},
+    "properties": {
+      "vendorProductId": {
+        "type": "string"
+      },
+      "vendorName": {
+        "type": "string"
+      },
+      "vendorParentProductId": {
+        "type": "string"
+      },
+      "vendorArtistId": {
+        "type": "string"
+      },
+      "s3Path": {
+        "type": "string"
+      },
+      "signedUrl": {
+        "type": "string"
+      },
+      "extension": {
+        "enum": [
+          "mp3",
+          "mp4"
+        ],
+        "type": "string"
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "genres": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "availableForSubscription": {
+        "type": "boolean"
+      },
+      "availableForPurchase": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "productTypeId",
+      "vendorName",
+      "vendorProductId"
+    ]
+  },
+  "Product": {
+    "type": "object",
+    "additionalProperties": {},
+    "properties": {
+      "productId": {
+        "type": "number"
+      },
+      "version": {
+        "type": "number"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "source": {
+        "type": "object",
+        "additionalProperties": {},
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "type": "string"
+          },
+          "vendorParentProductId": {
+            "type": "string"
+          },
+          "vendorArtistId": {
+            "type": "string"
+          },
+          "s3Path": {
+            "type": "string"
+          },
+          "signedUrl": {
+            "type": "string"
+          },
+          "extension": {
+            "enum": [
+              "mp3",
+              "mp4"
+            ],
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          },
+          "genres": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "availableForSubscription": {
+            "type": "boolean"
+          },
+          "availableForPurchase": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "productTypeGroupId": {
+        "type": "string"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "childProducts": {
+        "type": "array",
+        "items": {}
+      },
+      "purchaseCode": {
+        "type": "string"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "fulfillmentType": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "additionalProperties": {},
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "thumbnailApproved": {
+            "enum": [
+              "approved",
+              "blocked",
+              "escalated",
+              "pending"
+            ],
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "billingInterval": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "number"
+              },
+              "interval": {
+                "type": "string",
+                "enum": [
+                  "days",
+                  "weeks",
+                  "months"
+                ]
+              }
+            },
+            "required": [
+              "count",
+              "interval"
+            ]
+          },
+          "genres": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "subscribable": {
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "cdate",
+      "meta",
+      "productId",
+      "productTypeGroupId",
+      "productTypeId",
+      "source",
+      "status",
+      "udate"
+    ]
+  },
+  "ProductSalesSearch": {
+    "type": "object",
+    "properties": {
+      "productId": {
+        "type": "number"
+      },
+      "productTypeGroupId": {
+        "type": "string"
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "purchaseType": {
+        "type": "string",
+        "enum": [
+          "subscription",
+          "purchase",
+          "rental"
+        ]
+      },
+      "customerId": {
+        "type": "string"
+      },
+      "year": {
+        "type": "number"
+      },
+      "month": {
+        "type": "number"
+      },
+      "day": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "customerId",
+      "day",
+      "month",
+      "productId",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseType",
+      "year"
+    ]
+  },
+  "ProductSales": {
+    "type": "object",
+    "properties": {
+      "productSalesId": {
+        "type": "number"
+      },
+      "productName": {
+        "type": "string"
+      },
+      "artistProductId": {
+        "type": "number"
+      },
+      "parentProductId": {
+        "type": "number"
+      },
+      "completedOrders": {
+        "type": "number"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "version": {
+        "type": "number"
+      },
+      "productId": {
+        "type": "number"
+      },
+      "productTypeGroupId": {
+        "type": "string"
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "purchaseType": {
+        "type": "string",
+        "enum": [
+          "subscription",
+          "purchase",
+          "rental"
+        ]
+      },
+      "customerId": {
+        "type": "string"
+      },
+      "year": {
+        "type": "number"
+      },
+      "month": {
+        "type": "number"
+      },
+      "day": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "customerId",
+      "day",
+      "month",
+      "productId",
+      "productName",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseType",
+      "year"
+    ]
+  },
+  "PricedProduct": {
+    "type": "object",
+    "properties": {
+      "purchaseOptions": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "totalPrice": {
+              "type": "number"
+            },
+            "priceDetails": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "amount": {
+                    "type": "number"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "fee",
+                      "price"
+                    ]
+                  }
+                },
+                "required": [
+                  "amount",
+                  "name",
+                  "type"
+                ]
+              }
+            }
+          },
+          "required": [
+            "priceDetails",
+            "totalPrice",
+            "type"
+          ]
+        }
+      },
+      "productId": {
+        "type": "number"
+      },
+      "version": {
+        "type": "number"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "source": {
+        "type": "object",
+        "additionalProperties": {},
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "type": "string"
+          },
+          "vendorParentProductId": {
+            "type": "string"
+          },
+          "vendorArtistId": {
+            "type": "string"
+          },
+          "s3Path": {
+            "type": "string"
+          },
+          "signedUrl": {
+            "type": "string"
+          },
+          "extension": {
+            "enum": [
+              "mp3",
+              "mp4"
+            ],
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          },
+          "genres": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "availableForSubscription": {
+            "type": "boolean"
+          },
+          "availableForPurchase": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "productTypeGroupId": {
+        "type": "string"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "childProducts": {
+        "type": "array",
+        "items": {}
+      },
+      "purchaseCode": {
+        "type": "string"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "fulfillmentType": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "additionalProperties": {},
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "thumbnailApproved": {
+            "enum": [
+              "approved",
+              "blocked",
+              "escalated",
+              "pending"
+            ],
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "billingInterval": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "number"
+              },
+              "interval": {
+                "type": "string",
+                "enum": [
+                  "days",
+                  "weeks",
+                  "months"
+                ]
+              }
+            },
+            "required": [
+              "count",
+              "interval"
+            ]
+          },
+          "genres": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "subscribable": {
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "cdate",
+      "meta",
+      "productId",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseOptions",
+      "source",
+      "status",
+      "udate"
+    ]
+  },
+  "DigestProduct": {
+    "type": "object",
+    "properties": {
+      "digest": {
+        "description": "A Per-Product digested product availability rule set\nTracks rules that match the product (ruleIds)\nTracks available globally (whitelisted or no rules at global level = true, blacklisted at global level = false)\nTracks customer ids with white or blacklist matches for this product\nTracks site ids with white or blacklist matches for this product\nTracks subscription product ids that contain this product",
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "number"
+          },
+          "ruleIds": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "availableGlobally": {
+            "type": "boolean"
+          },
+          "whitelist": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "blacklist": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "subscriptionProductIds": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "priceOverrides": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "purchaseType": {
+                  "type": "string"
+                },
+                "effectivePrice": {
+                  "type": "number"
+                },
+                "customerId": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "siteId": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "isGlobal": {
+                  "type": "boolean"
+                },
+                "productId": {
+                  "type": [
+                    "null",
+                    "number"
+                  ]
+                }
+              },
+              "required": [
+                "customerId",
+                "effectivePrice",
+                "isGlobal",
+                "productId",
+                "purchaseType",
+                "siteId"
+              ]
+            }
+          },
+          "sales": {
+            "description": "Total sales counts to facilitate OpenSearch result sorting",
+            "type": "object",
+            "properties": {
+              "totalSales": {
+                "type": "number"
+              }
+            }
+          },
+          "version": {
+            "type": "number"
+          },
+          "cdate": {
+            "type": "string"
+          },
+          "udate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "availableGlobally",
+          "blacklist",
+          "productId",
+          "ruleIds",
+          "sales",
+          "subscriptionProductIds",
+          "whitelist"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "version": {
+        "type": "number"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "source": {
+        "type": "object",
+        "additionalProperties": {},
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "type": "string"
+          },
+          "vendorParentProductId": {
+            "type": "string"
+          },
+          "vendorArtistId": {
+            "type": "string"
+          },
+          "s3Path": {
+            "type": "string"
+          },
+          "signedUrl": {
+            "type": "string"
+          },
+          "extension": {
+            "enum": [
+              "mp3",
+              "mp4"
+            ],
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          },
+          "genres": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "availableForSubscription": {
+            "type": "boolean"
+          },
+          "availableForPurchase": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "productTypeGroupId": {
+        "type": "string"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "childProducts": {
+        "type": "array",
+        "items": {}
+      },
+      "purchaseCode": {
+        "type": "string"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "fulfillmentType": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "additionalProperties": {},
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "thumbnailApproved": {
+            "enum": [
+              "approved",
+              "blocked",
+              "escalated",
+              "pending"
+            ],
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "billingInterval": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "number"
+              },
+              "interval": {
+                "type": "string",
+                "enum": [
+                  "days",
+                  "weeks",
+                  "months"
+                ]
+              }
+            },
+            "required": [
+              "count",
+              "interval"
+            ]
+          },
+          "genres": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "subscribable": {
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "cdate",
+      "digest",
+      "meta",
+      "productId",
+      "productTypeGroupId",
+      "productTypeId",
+      "source",
+      "status",
+      "udate"
+    ]
+  },
+  "PurchaseOption": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string"
+      },
+      "totalPrice": {
+        "type": "number"
+      },
+      "priceDetails": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "amount": {
+              "type": "number"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "fee",
+                "price"
+              ]
+            }
+          },
+          "required": [
+            "amount",
+            "name",
+            "type"
+          ]
+        }
+      }
+    },
+    "required": [
+      "priceDetails",
+      "totalPrice",
+      "type"
+    ]
+  },
+  "PurchasePriceDetail": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "amount": {
+        "type": "number"
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "fee",
+          "price"
+        ]
+      }
+    },
+    "required": [
+      "amount",
+      "name",
+      "type"
+    ]
+  },
+  "PriceDetailType": {
+    "type": "string",
+    "enum": [
+      "fee",
+      "price"
+    ]
+  },
+  "ThumbnailApprovedStatus": {
+    "type": "string",
+    "enum": [
+      "approved",
+      "pending",
+      "blocked",
+      "escalated"
+    ]
+  },
+  "ArtApprovalList": {
+    "type": "object",
+    "properties": {
+      "vendorProductId": {
+        "type": "string"
+      },
+      "thumbnailApproved": {
+        "type": "string",
+        "enum": [
+          "approved",
+          "pending",
+          "blocked",
+          "escalated"
+        ]
+      },
+      "genres": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "genres",
+      "thumbnailApproved",
+      "vendorProductId"
+    ]
+  },
+  "ThumbnailApprovalApiBody": {
+    "type": "object",
+    "properties": {
+      "vendor": {
+        "type": "string"
+      },
+      "artApproval": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "vendorProductId": {
+              "type": "string"
+            },
+            "thumbnailApproved": {
+              "type": "string",
+              "enum": [
+                "approved",
+                "pending",
+                "blocked",
+                "escalated"
+              ]
+            },
+            "genres": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "genres",
+            "thumbnailApproved",
+            "vendorProductId"
+          ]
+        }
+      }
+    },
+    "required": [
+      "artApproval",
+      "vendor"
+    ]
+  },
+  "DistinctProductFieldPath": {
+    "type": "string",
+    "const": "meta.genres"
+  },
+  "EbookSubscription": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "ebookSubscription"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "book"
+      },
+      "purchaseCode": {
+        "type": "string",
+        "const": "EBOOKSUBSCRIPTION"
+      },
+      "fulfillmentType": {
+        "const": "digital",
+        "type": "string"
+      },
+      "subscribable": {
+        "const": true,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "keyField": true,
+            "type": "string"
+          },
+          "vendorName": {
+            "keyField": true,
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          },
+          "purchaseTypes": {
+            "type": "array",
+            "items": [
+              {
+                "type": "string",
+                "const": "subscription"
+              }
+            ],
+            "minItems": 1,
+            "maxItems": 1
+          },
+          "url": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "format",
+          "language",
+          "productTypeId",
+          "purchaseTypes",
+          "url",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "authors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "genre": {
+            "autoComplete": true,
+            "requiredIfActive": true,
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "categories": {
+            "autoComplete": true,
+            "distinctValue": "meta.categories",
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "basePrice": {
+            "requiredIfActive": true,
+            "type": "object",
+            "properties": {
+              "subscription": {
+                "autoComplete": true,
+                "distinctValue": "meta.basePrice.subscription",
+                "keyField": true,
+                "type": "number"
+              }
+            },
+            "required": [
+              "subscription"
+            ]
+          },
+          "billingInterval": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "default": 1,
+                "type": "number"
+              },
+              "interval": {
+                "default": "months",
+                "type": "string",
+                "enum": [
+                  "days",
+                  "weeks",
+                  "months"
+                ]
+              }
+            },
+            "required": [
+              "count",
+              "interval"
+            ]
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "type": "string"
+          }
+        },
+        "required": [
+          "billingInterval",
+          "name"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseCode",
+      "source",
+      "status"
+    ]
+  },
+  "Game": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "game"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "game"
+      },
+      "purchaseCode": {
+        "const": "GAME",
+        "type": "string"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string",
+            "const": "purchase"
+          }
+        ],
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "fulfillmentType": {
+        "const": "digital",
+        "type": "string"
+      },
+      "subscribable": {
+        "const": false,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "keyField": true,
+            "type": "string"
+          },
+          "vendorName": {
+            "keyField": true,
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          },
+          "submittedBy": {
+            "type": "string"
+          },
+          "submittedOn": {
+            "format": "date",
+            "type": "string"
+          },
+          "msrp": {
+            "keyField": true,
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "md5": {
+            "type": "string"
+          },
+          "fileSize": {
+            "type": "number"
+          },
+          "verified": {
+            "keyField": true,
+            "type": "boolean"
+          },
+          "genres": {
+            "distinctValue": "meta.genres",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "fileSize",
+          "md5",
+          "productTypeId",
+          "submittedBy",
+          "submittedOn",
+          "url",
+          "vendorName",
+          "vendorProductId",
+          "verified",
+          "version"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "genres": {
+            "autoComplete": true,
+            "requiredIfActive": true,
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "basePrice": {
+            "requiredIfActive": true,
+            "type": "object",
+            "properties": {
+              "purchase": {
+                "autoComplete": true,
+                "distinctValue": "meta.basePrice.purchase",
+                "keyField": true,
+                "type": "number"
+              }
+            },
+            "required": [
+              "purchase"
+            ]
+          },
+          "rating": {
+            "autoComplete": true,
+            "keyField": true,
+            "enum": [
+              "AO",
+              "E",
+              "E10+",
+              "M",
+              "RP",
+              "T"
+            ],
+            "type": "string"
+          },
+          "inAppPurchase": {
+            "type": "boolean"
+          },
+          "categories": {
+            "autoComplete": true,
+            "distinctValue": "meta.categories",
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "compatibility": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "imageUrls": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "bannerUrl": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "compatibility",
+          "genres",
+          "imageUrls",
+          "inAppPurchase",
+          "name"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "source",
+      "status"
+    ]
+  },
+  "GameRating": {
+    "type": "string",
+    "enum": [
+      "E",
+      "E10+",
+      "T",
+      "M",
+      "AO",
+      "RP"
+    ]
+  },
+  "GameSubscription": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "gameSubscription"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "game"
+      },
+      "purchaseCode": {
+        "const": "GAMESUBSCRIPTION",
+        "type": "string"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string",
+            "const": "subscription"
+          }
+        ],
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "fulfillmentType": {
+        "const": "digital",
+        "type": "string"
+      },
+      "subscribable": {
+        "const": true,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "description": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "basePrice": {
+            "requiredIfActive": true,
+            "type": "object",
+            "properties": {
+              "subscription": {
+                "autoComplete": true,
+                "distinctValue": "meta.basePrice.subscription",
+                "keyField": true,
+                "type": "number"
+              }
+            },
+            "required": [
+              "subscription"
+            ]
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "billingInterval": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "default": 1,
+                "type": "number"
+              },
+              "interval": {
+                "default": "months",
+                "type": "string",
+                "enum": [
+                  "days",
+                  "weeks",
+                  "months"
+                ]
+              }
+            },
+            "required": [
+              "count",
+              "interval"
+            ]
+          }
+        },
+        "required": [
+          "billingInterval",
+          "name"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "type": "string"
+          },
+          "vendorParentProductId": {
+            "type": "string"
+          },
+          "vendorArtistId": {
+            "type": "string"
+          },
+          "s3Path": {
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "status"
+    ]
+  },
+  "MovieCast": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "roles": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "name",
+      "roles"
+    ]
+  },
+  "VideoRating": {
+    "type": "string",
+    "enum": [
+      "NR",
+      "NC-17",
+      "R",
+      "PG-13",
+      "PG",
+      "G",
+      "TV-17",
+      "TV-Y",
+      "TV-Y7",
+      "TV-G",
+      "TV-PG",
+      "TV-14",
+      "TV-MA"
+    ]
+  },
+  "Movie": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "movie"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "movie"
+      },
+      "purchaseCode": {
+        "type": "string",
+        "const": "MOVIE"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string",
+            "const": "rental"
+          }
+        ],
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "fulfillmentType": {
+        "type": "string",
+        "const": "digital"
+      },
+      "subscribable": {
+        "const": false,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "keyField": true,
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "genres": {
+            "distinctValue": "meta.genres",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "subtitles": {
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "languages": {
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "licensed": {
+            "keyField": true,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "url",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "description": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "thumbnail": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "year": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "genres": {
+            "autoComplete": true,
+            "requiredIfActive": true,
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "categories": {
+            "autoComplete": true,
+            "distinctValue": "meta.categories",
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cast": {
+            "requiredIfActive": true,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "roles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "name",
+                "roles"
+              ]
+            }
+          },
+          "directors": {
+            "requiredIfActive": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rating": {
+            "autoComplete": true,
+            "requiredIfActive": true,
+            "keyField": true,
+            "enum": [
+              "G",
+              "NC-17",
+              "NR",
+              "PG",
+              "PG-13",
+              "R",
+              "TV-14",
+              "TV-17",
+              "TV-G",
+              "TV-MA",
+              "TV-PG",
+              "TV-Y",
+              "TV-Y7"
+            ],
+            "type": "string"
+          },
+          "length": {
+            "requiredIfActive": true,
+            "keyField": true,
+            "type": "number"
+          },
+          "basePrice": {
+            "requiredIfActive": true,
+            "type": "object",
+            "properties": {
+              "rental": {
+                "autoComplete": true,
+                "distinctValue": "meta.basePrice.rental",
+                "keyField": true,
+                "type": "number"
+              }
+            },
+            "required": [
+              "rental"
+            ]
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "downloadAllowed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "fulfillmentType",
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseCode",
+      "purchaseTypes",
+      "source",
+      "status"
+    ]
+  },
+  "MovieSubscription": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "movieSubscription"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "movie"
+      },
+      "purchaseCode": {
+        "const": "MOVIESUBSCRIPTION",
+        "type": "string"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string",
+            "const": "subscription"
+          }
+        ],
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "fulfillmentType": {
+        "const": "digital",
+        "type": "string"
+      },
+      "subscribable": {
+        "const": true,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "description": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "basePrice": {
+            "requiredIfActive": true,
+            "type": "object",
+            "properties": {
+              "subscription": {
+                "autoComplete": true,
+                "distinctValue": "meta.basePrice.subscription",
+                "keyField": true,
+                "type": "number"
+              }
+            },
+            "required": [
+              "subscription"
+            ]
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "billingInterval": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "default": 1,
+                "type": "number"
+              },
+              "interval": {
+                "default": "months",
+                "type": "string",
+                "enum": [
+                  "days",
+                  "weeks",
+                  "months"
+                ]
+              }
+            },
+            "required": [
+              "count",
+              "interval"
+            ]
+          }
+        },
+        "required": [
+          "billingInterval",
+          "name"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "type": "string"
+          },
+          "vendorParentProductId": {
+            "type": "string"
+          },
+          "vendorArtistId": {
+            "type": "string"
+          },
+          "s3Path": {
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "status"
+    ]
+  },
+  "MusicSubscription": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "musicSubscription"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "music"
+      },
+      "purchaseCode": {
+        "const": "MUSICSUBSCRIPTION",
+        "type": "string"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string",
+            "const": "subscription"
+          }
+        ],
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "fulfillmentType": {
+        "const": "digital",
+        "type": "string"
+      },
+      "subscribable": {
+        "const": true,
+        "type": "boolean"
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string",
+            "const": "musicSubscription"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "description": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "basePrice": {
+            "requiredIfActive": true,
+            "type": "object",
+            "properties": {
+              "subscription": {
+                "autoComplete": true,
+                "keyField": true,
+                "type": "number"
+              }
+            },
+            "required": [
+              "subscription"
+            ]
+          },
+          "billingInterval": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "default": 1,
+                "type": "number"
+              },
+              "interval": {
+                "default": "months",
+                "type": "string",
+                "enum": [
+                  "days",
+                  "weeks",
+                  "months"
+                ]
+              }
+            },
+            "required": [
+              "count",
+              "interval"
+            ]
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "type": "string"
+          }
+        },
+        "required": [
+          "billingInterval",
+          "name"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "isBlocked": {
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "type": "boolean"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "source",
+      "status"
+    ]
+  },
+  "NewsStand": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "newsStand"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "newsStand"
+      },
+      "purchaseCode": {
+        "type": "string",
+        "const": "NEWSSTAND"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string",
+            "const": "subscription"
+          }
+        ],
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "fulfillmentType": {
+        "type": "string",
+        "const": "digital"
+      },
+      "subscribable": {
+        "const": false,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "description": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "basePrice": {
+            "requiredIfActive": true,
+            "type": "object",
+            "properties": {
+              "subscription": {
+                "autoComplete": true,
+                "distinctValue": "meta.basePrice.subscription",
+                "keyField": true,
+                "type": "number"
+              }
+            },
+            "required": [
+              "subscription"
+            ]
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "termsAndConditions": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "billingInterval": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "default": 1,
+                "type": "number"
+              },
+              "interval": {
+                "default": "months",
+                "type": "string",
+                "enum": [
+                  "days",
+                  "weeks",
+                  "months"
+                ]
+              }
+            },
+            "required": [
+              "count",
+              "interval"
+            ]
+          }
+        },
+        "required": [
+          "billingInterval",
+          "name",
+          "termsAndConditions"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "type": "string"
+          },
+          "vendorParentProductId": {
+            "type": "string"
+          },
+          "vendorArtistId": {
+            "type": "string"
+          },
+          "s3Path": {
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "fulfillmentType",
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseCode",
+      "purchaseTypes",
+      "status"
+    ]
+  },
+  "LegacyApk": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "packageName": {
+        "type": "string"
+      },
+      "category": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "isSystemApp": {
+        "type": "boolean"
+      },
+      "isPrivileged": {
+        "type": "boolean"
+      },
+      "postInstallCommand": {
+        "type": "string"
+      },
+      "allowAppManagement": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "allowAppManagement",
+      "category",
+      "description",
+      "id",
+      "isPrivileged",
+      "isSystemApp",
+      "name",
+      "packageName",
+      "postInstallCommand"
+    ]
+  },
+  "TabletPackageFilter": {
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+      "customerId": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "siteId": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "channel": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "PackageType": {
+    "type": "string",
+    "enum": [
+      "personal",
+      "officer",
+      "community",
+      "pool"
+    ]
+  },
+  "Package": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "id": {
+        "type": "string"
+      },
+      "price": {
+        "type": "number"
+      },
+      "description": {
+        "type": "string"
+      },
+      "applications": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "packageName": {
+              "type": "string"
+            },
+            "category": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "isSystemApp": {
+              "type": "boolean"
+            },
+            "isPrivileged": {
+              "type": "boolean"
+            },
+            "postInstallCommand": {
+              "type": "string"
+            },
+            "allowAppManagement": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "allowAppManagement",
+            "category",
+            "description",
+            "id",
+            "isPrivileged",
+            "isSystemApp",
+            "name",
+            "packageName",
+            "postInstallCommand"
+          ]
+        }
+      },
+      "demo": {
+        "type": "boolean"
+      },
+      "modelNumber": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "personal",
+          "officer",
+          "community",
+          "pool"
+        ]
+      },
+      "deviceFeatures": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "filters": {
+        "additionalProperties": false,
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "siteId": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "channel": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "applications",
+      "demo",
+      "description",
+      "deviceFeatures",
+      "filters",
+      "id",
+      "modelNumber",
+      "name",
+      "price",
+      "type"
+    ]
+  },
+  "PackageIds": {
+    "type": "object",
+    "properties": {
+      "packageIds": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "packageIds"
+    ]
+  },
+  "TabletPackage": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "tabletPackage"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "tabletPackage"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "purchaseCode": {
+        "type": "string",
+        "const": "TABLET"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string",
+            "const": "subscription"
+          }
+        ],
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "fulfillmentType": {
+        "type": "string",
+        "const": "physical"
+      },
+      "subscribable": {
+        "const": false,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "requiredIfActive": true,
+            "keyField": true,
+            "type": "string",
+            "enum": [
+              "personal",
+              "officer",
+              "community",
+              "pool"
+            ]
+          },
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "description": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "demo": {
+            "keyField": true,
+            "type": "boolean"
+          },
+          "premiumContent": {
+            "type": "boolean"
+          },
+          "basePrice": {
+            "requiredIfActive": true,
+            "type": "object",
+            "properties": {
+              "subscription": {
+                "autoComplete": true,
+                "distinctValue": "meta.basePrice.subscription",
+                "keyField": true,
+                "type": "number"
+              }
+            },
+            "required": [
+              "subscription"
+            ]
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "billingInterval": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "default": 1,
+                "type": "number"
+              },
+              "interval": {
+                "default": "months",
+                "type": "string",
+                "enum": [
+                  "days",
+                  "weeks",
+                  "months"
+                ]
+              }
+            },
+            "required": [
+              "count",
+              "interval"
+            ]
+          },
+          "emmPolicyId": {
+            "type": "string"
+          },
+          "emmPolicyName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "billingInterval",
+          "demo",
+          "name",
+          "premiumContent",
+          "type"
+        ]
+      },
+      "filter": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "siteId": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "channel": {
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "productId": {
+        "type": "number"
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "type": "string"
+          },
+          "vendorParentProductId": {
+            "type": "string"
+          },
+          "vendorArtistId": {
+            "type": "string"
+          },
+          "s3Path": {
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "filter",
+      "fulfillmentType",
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseCode",
+      "purchaseTypes",
+      "status"
+    ]
+  },
+  "Track": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "track"
+      },
+      "parentProductId": {
+        "type": "number"
+      },
+      "parentProductTypeId": {
+        "const": "album",
+        "type": "string"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "music"
+      },
+      "purchaseCode": {
+        "type": "string",
+        "const": "MUSIC"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string",
+            "const": "purchase"
+          }
+        ],
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "fulfillmentType": {
+        "const": "digital",
+        "type": "string"
+      },
+      "subscribable": {
+        "const": false,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorName": {
+            "keyField": true,
+            "type": "string"
+          },
+          "vendorProductId": {
+            "keyField": true,
+            "type": "string"
+          },
+          "vendorArtistId": {
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          },
+          "vendorParentProductId": {
+            "keyField": true,
+            "type": "string"
+          },
+          "ingestionBatchId": {
+            "type": "string"
+          },
+          "contentFeedVersion": {
+            "type": "string"
+          },
+          "wholesalePrice": {
+            "type": "string"
+          },
+          "msrp": {
+            "keyField": true,
+            "type": "string"
+          },
+          "upcs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "parentLabelCode": {
+            "type": "string"
+          },
+          "parentLabelName": {
+            "keyField": true,
+            "type": "string"
+          },
+          "assetCode": {
+            "type": "string"
+          },
+          "assetTypeCode": {
+            "type": "string"
+          },
+          "subscriptionAssetCode": {
+            "type": "string"
+          },
+          "extension": {
+            "type": "string"
+          },
+          "sampleUrl": {
+            "type": "string"
+          },
+          "sampleUrl_s3Alias": {
+            "type": "string"
+          },
+          "grid": {
+            "type": "string"
+          },
+          "isrc": {
+            "type": "string"
+          },
+          "genres": {
+            "distinctValue": "meta.genres",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "availableForSubscription": {
+            "type": "boolean"
+          },
+          "availableForPurchase": {
+            "type": "boolean"
+          },
+          "diskNumber": {
+            "type": "number"
+          },
+          "trackNumber": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "msrp",
+          "productTypeId",
+          "vendorArtistId",
+          "vendorName",
+          "vendorProductId",
+          "wholesalePrice"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "subTitle": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "genres": {
+            "autoComplete": true,
+            "requiredIfActive": true,
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "categories": {
+            "autoComplete": true,
+            "distinctValue": "meta.categories",
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "length": {
+            "keyField": true,
+            "type": "number"
+          },
+          "basePrice": {
+            "type": "object",
+            "properties": {
+              "purchase": {
+                "keyField": true,
+                "autoComplete": true,
+                "distinctValue": "meta.basePrice.purchase",
+                "requiredIfActive": true,
+                "type": "number"
+              }
+            },
+            "required": [
+              "purchase"
+            ]
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "releaseDate": {
+            "keyField": true,
+            "type": "string"
+          },
+          "explicit": {
+            "type": "boolean"
+          },
+          "artists": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "vendorArtistId": {
+                  "type": "string"
+                },
+                "vendorName": {
+                  "type": "string"
+                },
+                "rank": {
+                  "type": "string"
+                },
+                "sortKey": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "name",
+                "rank",
+                "role",
+                "sortKey",
+                "vendorArtistId",
+                "vendorName"
+              ]
+            }
+          },
+          "rendition": {
+            "type": "string"
+          },
+          "thumbnailApproved": {
+            "type": "string"
+          },
+          "albumName": {
+            "type": "string"
+          },
+          "releaseYear": {
+            "distinctValue": "meta.releaseYear",
+            "autoComplete": true,
+            "type": "number"
+          }
+        },
+        "required": [
+          "artists",
+          "name"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseCode",
+      "purchaseTypes",
+      "source",
+      "status"
+    ]
+  },
+  "TvEpisode": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "tvEpisode"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "tv"
+      },
+      "purchaseCode": {
+        "type": "string",
+        "const": "TVEPISODE"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string",
+            "const": "rental"
+          }
+        ],
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "fulfillmentType": {
+        "type": "string",
+        "const": "digital"
+      },
+      "subscribable": {
+        "const": false,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "tmdbShowId": {
+        "requiredIfActive": true,
+        "type": "string"
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "keyField": true,
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "genres": {
+            "distinctValue": "meta.genres",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "subtitles": {
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "languages": {
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "licensed": {
+            "keyField": true,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "url",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "showName": {
+            "keyField": true,
+            "type": "string"
+          },
+          "description": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "genres": {
+            "autoComplete": true,
+            "requiredIfActive": true,
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rating": {
+            "autoComplete": true,
+            "requiredIfActive": true,
+            "keyField": true,
+            "enum": [
+              "G",
+              "NC-17",
+              "NR",
+              "PG",
+              "PG-13",
+              "R",
+              "TV-14",
+              "TV-17",
+              "TV-G",
+              "TV-MA",
+              "TV-PG",
+              "TV-Y",
+              "TV-Y7"
+            ],
+            "type": "string"
+          },
+          "length": {
+            "requiredIfActive": true,
+            "keyField": true,
+            "type": "number"
+          },
+          "thumbnail": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "season": {
+            "autoComplete": true,
+            "distinctValue": "meta.season",
+            "keyField": true,
+            "type": "number"
+          },
+          "episode": {
+            "autoComplete": true,
+            "distinctValue": "meta.episode",
+            "keyField": true,
+            "type": "number"
+          },
+          "categories": {
+            "autoComplete": true,
+            "distinctValue": "meta.categories",
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cast": {
+            "requiredIfActive": true,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "roles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "name",
+                "roles"
+              ]
+            }
+          },
+          "directors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "airDate": {
+            "requiredIfActive": true,
+            "keyField": true,
+            "type": "string"
+          },
+          "basePrice": {
+            "requiredIfActive": true,
+            "type": "object",
+            "properties": {
+              "rental": {
+                "autoComplete": ": true",
+                "keyField": true,
+                "type": "number"
+              }
+            },
+            "required": [
+              "rental"
+            ]
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "downloadAllowed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "airDate",
+          "episode",
+          "name",
+          "season",
+          "showName"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "fulfillmentType",
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseCode",
+      "purchaseTypes",
+      "source",
+      "status"
+    ]
+  },
+  "TvSeason": {
+    "type": "object",
+    "properties": {
+      "vendorName": {
+        "type": "string"
+      },
+      "vendorProductId": {
+        "type": "string"
+      },
+      "productTypeId": {
+        "type": "string",
+        "const": "tvSeason"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "tv"
+      },
+      "purchaseCode": {
+        "type": "string",
+        "const": "VIDEO"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": [
+          {
+            "type": "string",
+            "const": "rental"
+          }
+        ],
+        "minItems": 1,
+        "maxItems": 1
+      },
+      "fulfillmentType": {
+        "type": "string",
+        "const": "digital"
+      },
+      "subscribable": {
+        "const": false,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "season": {
+            "type": "number"
+          },
+          "year": {
+            "type": "string"
+          },
+          "basePrice": {
+            "autoComplete": ": true",
+            "type": "object",
+            "properties": {
+              "rental": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "rental"
+            ]
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "basePrice",
+          "description",
+          "endDate",
+          "name",
+          "season",
+          "startDate",
+          "thumbnail",
+          "year"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "type": "string"
+          },
+          "vendorParentProductId": {
+            "type": "string"
+          },
+          "vendorArtistId": {
+            "type": "string"
+          },
+          "s3Path": {
+            "type": "string"
+          },
+          "productTypeId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "productTypeId",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "fulfillmentType",
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseCode",
+      "purchaseTypes",
+      "status",
+      "vendorName",
+      "vendorProductId"
+    ]
+  },
+  "TmdbVendor": {
+    "type": "string",
+    "const": "tmdb"
+  },
+  "TvShow": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string",
+        "const": "tvShow"
+      },
+      "productTypeGroupId": {
+        "type": "string",
+        "const": "tv"
+      },
+      "subscribable": {
+        "const": false,
+        "type": "boolean"
+      },
+      "isBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "isManuallyBlocked": {
+        "keyField": true,
+        "type": "boolean"
+      },
+      "source": {
+        "type": "object",
+        "properties": {
+          "vendorProductId": {
+            "type": "string"
+          },
+          "vendorName": {
+            "keyField": true,
+            "type": "string",
+            "const": "tmdb"
+          },
+          "productTypeId": {
+            "type": "string"
+          },
+          "genres": {
+            "distinctValue": "meta.genres",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "productTypeId",
+          "vendorName",
+          "vendorProductId"
+        ]
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "keyField": true,
+            "type": "string"
+          },
+          "description": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "thumbnail": {
+            "requiredIfActive": true,
+            "type": "string"
+          },
+          "genres": {
+            "autoComplete": true,
+            "requiredIfActive": true,
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "airDate": {
+            "requiredIfActive": true,
+            "keyField": true,
+            "type": "string"
+          },
+          "cast": {
+            "requiredIfActive": true,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "roles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "name",
+                "roles"
+              ]
+            }
+          },
+          "directors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "languages": {
+            "requiredIfActive": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "categories": {
+            "autoComplete": true,
+            "distinctValue": "meta.categories",
+            "keyField": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rating": {
+            "autoComplete": true,
+            "requiredIfActive": true,
+            "keyField": true,
+            "enum": [
+              "G",
+              "NC-17",
+              "NR",
+              "PG",
+              "PG-13",
+              "R",
+              "TV-14",
+              "TV-17",
+              "TV-G",
+              "TV-MA",
+              "TV-PG",
+              "TV-Y",
+              "TV-Y7"
+            ],
+            "type": "string"
+          },
+          "startDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date",
+            "type": "string"
+          },
+          "downloadAllowed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "airDate",
+          "description",
+          "name",
+          "thumbnail"
+        ]
+      },
+      "productId": {
+        "type": "number"
+      },
+      "childProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "requiredProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "purchaseCode": {
+        "type": "string"
+      },
+      "purchaseTypes": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "fulfillmentType": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "PendingReview",
+          "Active",
+          "Deleted",
+          "Reingest",
+          "Inactive"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "meta",
+      "productTypeGroupId",
+      "productTypeId",
+      "source",
+      "status"
+    ]
+  },
+  "Availability": {
+    "type": "object",
+    "properties": {
+      "productId": {
+        "type": "number"
+      },
+      "available": {
+        "type": "boolean"
+      },
+      "checks": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "enum": [
+                "activeStatus",
+                "activeDateRange",
+                "productTypeAvailabilityRule",
+                "productAvailabilityRule"
+              ]
+            },
+            "result": {
+              "type": "boolean"
+            },
+            "detail": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "detail",
+            "name",
+            "result"
+          ]
+        }
+      }
+    },
+    "required": [
+      "available",
+      "checks",
+      "productId"
+    ]
+  },
+  "AvailabilityCheck": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "enum": [
+          "activeStatus",
+          "activeDateRange",
+          "productTypeAvailabilityRule",
+          "productAvailabilityRule"
+        ]
+      },
+      "result": {
+        "type": "boolean"
+      },
+      "detail": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "detail",
+      "name",
+      "result"
+    ]
+  },
+  "AvailabilityCheckName": {
+    "type": "string",
+    "enum": [
+      "activeStatus",
+      "activeDateRange",
+      "productTypeAvailabilityRule",
+      "productAvailabilityRule"
+    ]
+  },
+  "AvailabilityUpdatedClauses": {
+    "type": "object",
+    "properties": {
+      "blacklistClausesWhereBlock": {
+        "type": "string"
+      },
+      "whitelistClausesWhereBlock": {
+        "type": "string"
+      },
+      "whitelistSubscriptionClausesWhereBlock": {
+        "type": "string"
+      },
+      "blacklistSubscriptionClausesWhereBlock": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "blacklistClausesWhereBlock",
+      "blacklistSubscriptionClausesWhereBlock",
+      "whitelistClausesWhereBlock",
+      "whitelistSubscriptionClausesWhereBlock"
+    ]
+  },
+  "BlocklistTerm": {
+    "type": "object",
+    "properties": {
+      "blocklistTermId": {
+        "type": "number"
+      },
+      "term": {
+        "type": "string"
+      },
+      "enabled": {
+        "type": "boolean"
+      },
+      "productTypeGroupId": {
+        "type": "string"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "blocklistTermId",
+      "enabled",
+      "productTypeGroupId",
+      "term"
+    ]
+  },
+  "CreateBlocklistTermsRequestBody": {
+    "type": "object",
+    "properties": {
+      "terms": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "productTypeGroupId": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "productTypeGroupId",
+      "terms"
+    ]
+  },
+  "DisableBlocklistTermsRequestBody": {
+    "type": "object",
+    "properties": {
+      "ids": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "required": [
+      "ids"
+    ]
+  },
+  "BlockActionType": {
+    "type": "string",
+    "enum": [
+      "add",
+      "remove"
+    ]
+  },
+  "BlockActionBy": {
+    "type": "string",
+    "enum": [
+      "terms",
+      "product",
+      "autoReview"
+    ]
+  },
+  "BlockActionState": {
+    "type": "string",
+    "enum": [
+      "applied",
+      "processing",
+      "pending",
+      "failed"
+    ]
+  },
+  "ManuallyBlockedReason": {
+    "type": "string",
+    "enum": [
+      "explicit",
+      "agencyRequested",
+      "inappropriateArtist",
+      "nonstandard"
+    ]
+  },
+  "BlockAction": {
+    "type": "object",
+    "properties": {
+      "blockActionId": {
+        "type": "number"
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "terms",
+          "product",
+          "autoReview"
+        ]
+      },
+      "blocklistTermIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "productId": {
+        "type": "number"
+      },
+      "manuallyBlockedReason": {
+        "enum": [
+          "agencyRequested",
+          "explicit",
+          "inappropriateArtist",
+          "nonstandard"
+        ],
+        "type": "string"
+      },
+      "state": {
+        "type": "string",
+        "enum": [
+          "applied",
+          "processing",
+          "pending",
+          "failed"
+        ]
+      },
+      "action": {
+        "type": "string",
+        "enum": [
+          "add",
+          "remove"
+        ]
+      },
+      "errorDescription": {
+        "type": "string"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "action",
+      "blockActionId",
+      "state",
+      "type"
+    ]
+  },
+  "ManualBlockListRequestBody": {
+    "type": "object",
+    "properties": {
+      "manuallyBlockedReason": {
+        "enum": [
+          "agencyRequested",
+          "explicit",
+          "inappropriateArtist",
+          "nonstandard"
+        ],
+        "type": "string"
+      }
+    }
+  },
+  "LegacyAdditionalData": {
+    "type": "object",
+    "properties": {
+      "blocklistTerms": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "blocklistTermId": {
+              "type": "number"
+            },
+            "term": {
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "productTypeGroupId": {
+              "type": "string"
+            },
+            "cdate": {
+              "type": "string"
+            },
+            "udate": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "blocklistTermId",
+            "enabled",
+            "productTypeGroupId",
+            "term"
+          ]
+        }
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "vendorProductId": {
+        "type": "string"
+      }
+    }
+  },
+  "BlockActionLegacyMessage": {
+    "type": "object",
+    "properties": {
+      "blockActionId": {
+        "type": "number"
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "terms",
+          "product",
+          "autoReview"
+        ]
+      },
+      "blocklistTermIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "productId": {
+        "type": "number"
+      },
+      "manuallyBlockedReason": {
+        "enum": [
+          "agencyRequested",
+          "explicit",
+          "inappropriateArtist",
+          "nonstandard"
+        ],
+        "type": "string"
+      },
+      "state": {
+        "type": "string",
+        "enum": [
+          "applied",
+          "processing",
+          "pending",
+          "failed"
+        ]
+      },
+      "action": {
+        "type": "string",
+        "enum": [
+          "add",
+          "remove"
+        ]
+      },
+      "errorDescription": {
+        "type": "string"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "blocklistTerms": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "blocklistTermId": {
+              "type": "number"
+            },
+            "term": {
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "productTypeGroupId": {
+              "type": "string"
+            },
+            "cdate": {
+              "type": "string"
+            },
+            "udate": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "blocklistTermId",
+            "enabled",
+            "productTypeGroupId",
+            "term"
+          ]
+        }
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "vendorProductId": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "action",
+      "blockActionId",
+      "state",
+      "type"
+    ]
+  },
+  "BlockReason": {
+    "type": "object",
+    "properties": {
+      "blockReasonId": {
+        "type": "number"
+      },
+      "productId": {
+        "type": "number"
+      },
+      "blockedByProduct": {
+        "type": "number"
+      },
+      "termId": {
+        "type": [
+          "null",
+          "number"
+        ]
+      },
+      "term": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "blockActionId": {
+        "type": [
+          "null",
+          "number"
+        ]
+      },
+      "manuallyBlockedReason": {
+        "anyOf": [
+          {
+            "enum": [
+              "agencyRequested",
+              "explicit",
+              "inappropriateArtist",
+              "nonstandard"
+            ],
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "isManuallyBlocked": {
+        "type": [
+          "null",
+          "boolean"
+        ]
+      },
+      "isActive": {
+        "type": "boolean"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "isActive",
+      "productId"
+    ]
+  },
+  "BlockReasonConstruct": {
+    "type": "object",
+    "properties": {
+      "productId": {
+        "type": "number"
+      },
+      "blockAction": {
+        "type": "object",
+        "properties": {
+          "blockActionId": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "terms",
+              "product",
+              "autoReview"
+            ]
+          },
+          "blocklistTermIds": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "productId": {
+            "type": "number"
+          },
+          "manuallyBlockedReason": {
+            "enum": [
+              "agencyRequested",
+              "explicit",
+              "inappropriateArtist",
+              "nonstandard"
+            ],
+            "type": "string"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "applied",
+              "processing",
+              "pending",
+              "failed"
+            ]
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "add",
+              "remove"
+            ]
+          },
+          "errorDescription": {
+            "type": "string"
+          },
+          "cdate": {
+            "type": "string"
+          },
+          "udate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "action",
+          "blockActionId",
+          "state",
+          "type"
+        ]
+      },
+      "blockedByProduct": {
+        "type": "number"
+      },
+      "termData": {
+        "type": "object",
+        "properties": {
+          "blocklistTermId": {
+            "type": "number"
+          },
+          "term": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "productTypeGroupId": {
+            "type": "string"
+          },
+          "cdate": {
+            "type": "string"
+          },
+          "udate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "blocklistTermId",
+          "enabled",
+          "productTypeGroupId",
+          "term"
+        ]
+      },
+      "isManuallyBlocked": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "productId"
+    ]
+  },
+  "DistinctProductValue": {
+    "type": "object",
+    "properties": {
+      "distinctProductValueId": {
+        "type": "number"
+      },
+      "fieldPath": {
+        "type": "string"
+      },
+      "productTypeGroupId": {
+        "type": "string"
+      },
+      "sourceValueName": {
+        "type": "string"
+      },
+      "displayName": {
+        "type": "string"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "displayName",
+      "distinctProductValueId",
+      "fieldPath",
+      "productTypeGroupId",
+      "sourceValueName"
+    ]
+  },
+  "EditableDistinctProductValueFields": {
+    "type": "object",
+    "properties": {
+      "displayName": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "displayName"
+    ]
+  },
+  "DistinctProductValueUpdateResult": {
+    "type": "object",
+    "properties": {
+      "new": {
+        "type": "object",
+        "properties": {
+          "distinctProductValueId": {
+            "type": "number"
+          },
+          "fieldPath": {
+            "type": "string"
+          },
+          "productTypeGroupId": {
+            "type": "string"
+          },
+          "sourceValueName": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "cdate": {
+            "type": "string"
+          },
+          "udate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "displayName",
+          "distinctProductValueId",
+          "fieldPath",
+          "productTypeGroupId",
+          "sourceValueName"
+        ]
+      },
+      "old": {
+        "type": "object",
+        "properties": {
+          "distinctProductValueId": {
+            "type": "number"
+          },
+          "fieldPath": {
+            "type": "string"
+          },
+          "productTypeGroupId": {
+            "type": "string"
+          },
+          "sourceValueName": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "cdate": {
+            "type": "string"
+          },
+          "udate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "displayName",
+          "distinctProductValueId",
+          "fieldPath",
+          "productTypeGroupId",
+          "sourceValueName"
+        ]
+      }
+    },
+    "required": [
+      "new",
+      "old"
+    ]
+  },
+  "BulkDvt": {
+    "type": "object",
+    "properties": {
+      "data": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "displayName"
+        ]
+      },
+      "ids": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "required": [
+      "data",
+      "ids"
+    ]
+  },
+  "Fee": {
+    "type": "object",
+    "properties": {
+      "feeId": {
+        "type": "number"
+      },
+      "customerId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "siteId": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "amount": {
+        "type": "number"
+      },
+      "percent": {
+        "type": "boolean"
+      },
+      "clauses": {},
+      "enabled": {
+        "type": "boolean"
+      },
+      "version": {
+        "type": "number"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "amount",
+      "clauses",
+      "enabled",
+      "name",
+      "percent",
+      "productTypeId"
+    ]
+  },
+  "Filter": {
+    "additionalProperties": false,
+    "type": "object",
+    "properties": {
+      "customerId": {
+        "type": "string"
+      },
+      "siteId": {
+        "type": "string"
+      },
+      "hardwareType": {
+        "type": "string"
+      },
+      "channel": {
+        "type": "string"
+      },
+      "stype": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "customerId"
+    ]
+  },
+  "FutureState": {
+    "type": "string",
+    "enum": [
+      "pending",
+      "processing",
+      "cancelled",
+      "complete",
+      "error"
+    ]
+  },
+  "FutureProductChange": {
+    "type": "object",
+    "properties": {
+      "futureProductChangeId": {
+        "type": "number"
+      },
+      "productId": {
+        "type": "number"
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "vendorProductId": {
+        "type": "string"
+      },
+      "actionDate": {
+        "type": "string"
+      },
+      "vendorName": {
+        "type": "string"
+      },
+      "state": {
+        "type": "string"
+      },
+      "error": {
+        "type": "string"
+      },
+      "version": {
+        "type": "number"
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "ingestionBatchId": {
+        "type": "string"
+      },
+      "action": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "object",
+            "additionalProperties": {}
+          },
+          "meta": {
+            "type": "object",
+            "additionalProperties": {}
+          }
+        }
+      }
+    },
+    "required": [
+      "action",
+      "actionDate",
+      "futureProductChangeId",
+      "productTypeId",
+      "state",
+      "vendorName",
+      "vendorProductId"
+    ]
+  },
+  "Heartbeat": {
+    "type": "object",
+    "properties": {
+      "version": {
+        "type": "string"
+      },
+      "postgres": {},
+      "eligibility": {}
+    },
+    "required": [
+      "version"
+    ]
+  },
+  "Search": {
+    "type": "object",
+    "properties": {
+      "term": {
+        "description": "General search term. This will be used to find relevant products according to an internal algorithm.",
+        "type": "string"
+      },
+      "query": {
+        "description": "Find products of a particular productType that loosely match a passed in object.\n\nQueries may only be conducted against one productType at a time. To search against multiple productTypes,\nconsider instead using `match`.",
+        "type": "object",
+        "properties": {
+          "productTypeId": {
+            "type": "string"
+          },
+          "clauses": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean"
+                ]
+              }
+            }
+          }
+        },
+        "required": [
+          "clauses",
+          "productTypeId"
+        ]
+      },
+      "match": {
+        "description": "Find products that strictly match the passed in partial object(s).",
+        "anyOf": [
+          {
+            "type": "object",
+            "properties": {},
+            "additionalProperties": true
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        ]
+      },
+      "context": {
+        "type": "object",
+        "properties": {
+          "enforce": {
+            "type": "boolean"
+          },
+          "customerId": {
+            "type": "string"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "productId": {
+            "type": "string"
+          }
+        }
+      },
+      "pageNumber": {
+        "description": "Default 0.",
+        "minimum": 0,
+        "type": "number"
+      },
+      "pageSize": {
+        "description": "Default 25.",
+        "minimum": 0,
+        "maximum": 1000,
+        "type": "number"
+      },
+      "orderBy": {
+        "anyOf": [
+          {
+            "description": "Of the form {'meta.rating': 'DESC'}",
+            "type": "object",
+            "additionalProperties": {
+              "enum": [
+                "ASC",
+                "DESC",
+                "EXPLICIT"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "type": "array",
+            "items": {
+              "description": "Of the form {'meta.rating': 'DESC'}",
+              "type": "object",
+              "additionalProperties": {
+                "enum": [
+                  "ASC",
+                  "DESC",
+                  "EXPLICIT"
+                ],
+                "type": "string"
+              }
+            }
+          }
+        ]
+      },
+      "total": {
+        "description": "If set to true, return a total count of all matched products.",
+        "type": "boolean"
+      }
+    }
+  },
+  "Query": {
+    "type": "object",
+    "properties": {
+      "productTypeId": {
+        "type": "string"
+      },
+      "clauses": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "number",
+              "boolean"
+            ]
+          }
+        }
+      }
+    },
+    "required": [
+      "clauses",
+      "productTypeId"
+    ]
+  },
+  "Match": {
+    "anyOf": [
+      {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": true
+      },
+      {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": true
+        }
+      }
+    ]
+  },
+  "Context": {
+    "type": "object",
+    "properties": {
+      "enforce": {
+        "type": "boolean"
+      },
+      "customerId": {
+        "type": "string"
+      },
+      "siteId": {
+        "type": "string"
+      },
+      "productId": {
+        "type": "string"
+      }
+    }
+  },
+  "OrderBy": {
+    "description": "Of the form {'meta.rating': 'DESC'}",
+    "type": "object",
+    "additionalProperties": {
+      "enum": [
+        "ASC",
+        "DESC",
+        "EXPLICIT"
+      ],
+      "type": "string"
+    }
+  },
+  "QueryArgs": {
+    "type": "object",
+    "additionalProperties": {
+      "type": "object",
+      "properties": {
+        "idx": {
+          "type": "number"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {}
+            },
+            {
+              "type": [
+                "string",
+                "number",
+                "boolean"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "idx",
+        "value"
+      ]
+    }
+  },
+  "Homepage": {
+    "type": "object",
+    "properties": {
+      "homepageId": {
+        "type": "number"
+      },
+      "version": {
+        "type": "number"
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "displayName": {
+        "type": "string"
+      },
+      "rank": {
+        "type": "number"
+      },
+      "search": {
+        "type": "object",
+        "properties": {
+          "term": {
+            "description": "General search term. This will be used to find relevant products according to an internal algorithm.",
+            "type": "string"
+          },
+          "query": {
+            "description": "Find products of a particular productType that loosely match a passed in object.\n\nQueries may only be conducted against one productType at a time. To search against multiple productTypes,\nconsider instead using `match`.",
+            "type": "object",
+            "properties": {
+              "productTypeId": {
+                "type": "string"
+              },
+              "clauses": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "string",
+                      "number",
+                      "boolean"
+                    ]
+                  }
+                }
+              }
+            },
+            "required": [
+              "clauses",
+              "productTypeId"
+            ]
+          },
+          "match": {
+            "description": "Find products that strictly match the passed in partial object(s).",
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {},
+                  "additionalProperties": true
+                }
+              }
+            ]
+          },
+          "context": {
+            "type": "object",
+            "properties": {
+              "enforce": {
+                "type": "boolean"
+              },
+              "customerId": {
+                "type": "string"
+              },
+              "siteId": {
+                "type": "string"
+              },
+              "productId": {
+                "type": "string"
+              }
+            }
+          },
+          "pageNumber": {
+            "description": "Default 0.",
+            "minimum": 0,
+            "type": "number"
+          },
+          "pageSize": {
+            "description": "Default 25.",
+            "minimum": 0,
+            "maximum": 1000,
+            "type": "number"
+          },
+          "orderBy": {
+            "anyOf": [
+              {
+                "description": "Of the form {'meta.rating': 'DESC'}",
+                "type": "object",
+                "additionalProperties": {
+                  "enum": [
+                    "ASC",
+                    "DESC",
+                    "EXPLICIT"
+                  ],
+                  "type": "string"
+                }
+              },
+              {
+                "type": "array",
+                "items": {
+                  "description": "Of the form {'meta.rating': 'DESC'}",
+                  "type": "object",
+                  "additionalProperties": {
+                    "enum": [
+                      "ASC",
+                      "DESC",
+                      "EXPLICIT"
+                    ],
+                    "type": "string"
+                  }
+                }
+              }
+            ]
+          },
+          "total": {
+            "description": "If set to true, return a total count of all matched products.",
+            "type": "boolean"
+          }
+        }
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "displayName",
+      "productTypeId",
+      "rank",
+      "search"
+    ]
+  },
+  "LargeImpactEventState": {
+    "type": "string",
+    "enum": [
+      "pending",
+      "processing",
+      "complete"
+    ]
+  },
+  "LargeImpactEvent": {
+    "type": "object",
+    "properties": {
+      "largeImpactEventId": {
+        "type": "number"
+      },
+      "routingKey": {
+        "type": "string"
+      },
+      "payload": {},
+      "state": {
+        "type": "string",
+        "enum": [
+          "pending",
+          "processing",
+          "complete"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "version": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "payload",
+      "routingKey",
+      "state"
+    ]
+  },
+  "Launcher": {
+    "type": "object",
+    "properties": {
+      "workspace": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "widget",
+                "shortcut"
+              ]
+            },
+            "packageName": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "packageName",
+            "type"
+          ]
+        }
+      }
+    },
+    "required": [
+      "workspace"
+    ]
+  },
+  "WorkspaceItem": {
+    "type": "object",
+    "properties": {
+      "type": {
+        "type": "string",
+        "enum": [
+          "widget",
+          "shortcut"
+        ]
+      },
+      "packageName": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "packageName",
+      "type"
+    ]
+  },
+  "WorkspaceItemType": {
+    "type": "string",
+    "enum": [
+      "widget",
+      "shortcut"
+    ]
+  },
+  "ProductAggFields": {
+    "type": "object",
+    "properties": {
+      "fields": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "values": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "required": [
+            "name",
+            "path",
+            "values"
+          ]
+        }
+      }
+    },
+    "required": [
+      "fields"
+    ]
+  },
+  "ProductAggField": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "path": {
+        "type": "string"
+      },
+      "values": {
+        "type": "array",
+        "items": {}
+      }
+    },
+    "required": [
+      "name",
+      "path",
+      "values"
+    ]
+  },
+  "ProductTypeAvailability": {
+    "type": "object",
+    "properties": {
+      "available": {
+        "type": "boolean"
+      },
+      "inherited": {
+        "type": "boolean"
+      },
+      "ruleId": {
+        "type": "number"
+      },
+      "parent": {
+        "type": "object",
+        "properties": {
+          "available": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "available"
+        ]
+      }
+    },
+    "required": [
+      "available",
+      "inherited"
+    ]
+  },
+  "SuccessResult": {
+    "type": "object",
+    "properties": {
+      "result": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "result"
+    ]
+  },
+  "ErrorResult": {
+    "type": "object",
+    "properties": {
+      "errors": {
+        "type": "array",
+        "items": {}
+      }
+    },
+    "required": [
+      "errors"
+    ]
+  },
+  "EsPackage": {
+    "description": "Created by revji on 7/28/2017.",
+    "type": "object",
+    "properties": {
+      "_id": {
+        "type": "string"
+      },
+      "_version": {
+        "type": "number"
+      },
+      "price": {
+        "type": "number"
+      },
+      "name": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "bundleIds": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "demo": {
+        "type": "boolean"
+      },
+      "filter": {
+        "type": "object",
+        "additionalProperties": {},
+        "properties": {
+          "stype": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "customerId": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "siteId": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "hardwareType": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "channel": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "udate": {
+        "type": "string"
+      },
+      "cdate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "bundleIds",
+      "demo",
+      "description",
+      "name",
+      "price"
+    ]
+  },
+  "EsPackageFilter": {
+    "type": "object",
+    "additionalProperties": {},
+    "properties": {
+      "stype": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "customerId": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "siteId": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "hardwareType": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "channel": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "EsBundle": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "type": "string"
+      },
+      "_version": {
+        "type": "number"
+      },
+      "applications": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "applicationId": {
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "applicationId",
+            "enabled"
+          ]
+        }
+      },
+      "name": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "cdate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "applications",
+      "name"
+    ]
+  },
+  "EsBundleApplication": {
+    "type": "object",
+    "properties": {
+      "applicationId": {
+        "type": "string"
+      },
+      "enabled": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "applicationId",
+      "enabled"
+    ]
+  },
+  "EsApplication": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "type": "string"
+      },
+      "_version": {
+        "type": "number"
+      },
+      "md5": {
+        "type": "string"
+      },
+      "category": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "isPrivileged": {
+        "type": "boolean"
+      },
+      "isSystemApp": {
+        "type": "boolean"
+      },
+      "allowAppManagement": {
+        "type": "boolean"
+      },
+      "postInstallCommand": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "androidClass": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      },
+      "cdate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "allowAppManagement",
+      "androidClass",
+      "category",
+      "isPrivileged",
+      "isSystemApp",
+      "name",
+      "postInstallCommand"
+    ]
+  },
+  "IPageParams": {
+    "description": "Created by bstoddart on 7/14/2017.",
+    "type": "object",
+    "properties": {
+      "page": {
+        "type": "number"
+      },
+      "pageSize": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "page",
+      "pageSize"
+    ]
+  },
+  "ISortParams": {
+    "type": "object",
+    "properties": {
+      "fieldName": {
+        "type": "string"
+      },
+      "direction": {
+        "type": "string",
+        "enum": [
+          "asc",
+          "desc"
+        ]
+      }
+    },
+    "required": [
+      "direction",
+      "fieldName"
+    ]
+  },
+  "SortDirections": {
+    "type": "string",
+    "enum": [
+      "asc",
+      "desc"
+    ]
+  },
+  "AuditContext": {
+    "type": "object",
+    "properties": {
+      "error": {},
+      "reason": {},
+      "source": {},
+      "routingKey": {},
+      "inmateJwt": {
+        "description": "If an inmate jwt was provided and valid, its payload will be held here.",
+        "type": "object",
+        "properties": {
+          "jwtType": {
+            "type": "string",
+            "const": "INMATE"
+          },
+          "customerId": {
+            "type": "string"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "inmateId": {
+            "type": "string"
+          },
+          "custodyAccount": {
+            "type": "string"
+          },
+          "callPartyId": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "serialNumber": {
+            "type": "string"
+          },
+          "exp": {
+            "type": "number"
+          },
+          "iat": {
+            "type": "number"
+          },
+          "updated_at": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "callPartyId",
+          "custodyAccount",
+          "customerId",
+          "exp",
+          "firstName",
+          "iat",
+          "jwtType",
+          "lastName",
+          "siteId"
+        ]
+      },
+      "corpJwt": {
+        "description": "If a corp jwt was provided and valid, its payload will be held here.",
+        "type": "object",
+        "properties": {
+          "jwtType": {
+            "type": "string",
+            "const": "CORPORATE"
+          },
+          "username": {
+            "type": "string"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "exp": {
+            "type": "number"
+          },
+          "iat": {
+            "type": "number"
+          },
+          "updated_at": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "exp",
+          "iat",
+          "jwtType",
+          "permissions",
+          "username"
+        ]
+      },
+      "tabletJwt": {
+        "description": "If a tablet jwt was provided and valid, its value will be held here.",
+        "type": "object",
+        "properties": {
+          "jwtType": {
+            "type": "string",
+            "const": "TABLET"
+          },
+          "customerId": {
+            "type": "string"
+          },
+          "siteId": {
+            "type": "string"
+          },
+          "serialNumber": {
+            "type": "string"
+          },
+          "exp": {
+            "type": "number"
+          },
+          "iat": {
+            "type": "number"
+          },
+          "updated_at": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "customerId",
+          "exp",
+          "iat",
+          "jwtType",
+          "serialNumber",
+          "siteId"
+        ]
+      },
+      "apiKey": {
+        "description": "If an api key was provided and valid, its value will be held here.",
+        "type": "string"
+      },
+      "facilityJwt:beta": {
+        "description": "If a facility jwt (beta) was provided and valid, its value will be held here.",
+        "type": "object",
+        "properties": {
+          "jwtVersion": {
+            "type": "string",
+            "const": "beta"
+          },
+          "username": {
+            "type": "string"
+          },
+          "customerId": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "jwtType": {
+            "type": "string",
+            "const": "FACILITY"
+          },
+          "exp": {
+            "type": "number"
+          },
+          "iat": {
+            "type": "number"
+          },
+          "updated_at": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "customerId",
+          "exp",
+          "iat",
+          "jwtType",
+          "jwtVersion",
+          "username"
+        ]
+      },
+      "facilityJwt": {
+        "description": "If a facility jwt (v1) was provided and valid, its value will be held here.",
+        "type": "object",
+        "properties": {
+          "jwtVersion": {
+            "type": "string",
+            "const": "1"
+          },
+          "username": {
+            "description": "Example: name@I-12345",
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "customerId": {
+            "description": "The current customerId. If the user has access to multiple customerIds, they must access\neach customer with separate JWTs.",
+            "type": "string"
+          },
+          "siteIds": {
+            "description": "The sites which are allowed for the user for the current customer.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "applications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "serialNumber": {
+            "type": "string"
+          },
+          "jwtType": {
+            "type": "string",
+            "const": "FACILITY"
+          },
+          "exp": {
+            "type": "number"
+          },
+          "iat": {
+            "type": "number"
+          },
+          "updated_at": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "applications",
+          "customerId",
+          "exp",
+          "firstName",
+          "iat",
+          "jwtType",
+          "jwtVersion",
+          "lastName",
+          "permissions",
+          "siteIds",
+          "username"
+        ]
+      }
+    }
+  },
+  "Config": {
+    "type": "object",
+    "properties": {
+      "disablePurchaseType": {
+        "description": "Controls what productTypes are NOT allowed to be utilized (purchase/rental/subscription)",
+        "context": "Customer",
+        "type": "object",
+        "properties": {
+          "purchase": {
+            "description": "Controls what productTypes are NOT allowed for purchase",
+            "context": "Customer",
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "accessory",
+                "album",
+                "apk",
+                "artist",
+                "device",
+                "ebook",
+                "ebookSubscription",
+                "game",
+                "gameSubscription",
+                "movie",
+                "musicSubscription",
+                "newsStand",
+                "tabletPackage",
+                "track",
+                "tvEpisode",
+                "tvShow"
+              ]
+            }
+          },
+          "rental": {
+            "description": "Controls what productTypes are NOT allowed for rental",
+            "context": "Customer",
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "accessory",
+                "album",
+                "apk",
+                "artist",
+                "device",
+                "ebook",
+                "ebookSubscription",
+                "game",
+                "gameSubscription",
+                "movie",
+                "musicSubscription",
+                "newsStand",
+                "tabletPackage",
+                "track",
+                "tvEpisode",
+                "tvShow"
+              ]
+            }
+          },
+          "subscription": {
+            "description": "Controls what productTypes are NOT allowed for subscription",
+            "context": "Customer",
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "accessory",
+                "album",
+                "apk",
+                "artist",
+                "device",
+                "ebook",
+                "ebookSubscription",
+                "game",
+                "gameSubscription",
+                "movie",
+                "musicSubscription",
+                "newsStand",
+                "tabletPackage",
+                "track",
+                "tvEpisode",
+                "tvShow"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "required": [
+      "disablePurchaseType"
+    ]
+  },
+  "Paginated": {
+    "type": "object",
+    "properties": {
+      "scrollId": {
+        "type": "string"
+      },
+      "data": {
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
+      },
+      "pageSize": {
+        "type": "number"
+      },
+      "pageNumber": {
+        "type": "number"
+      },
+      "total": {
+        "type": "number"
+      }
+    },
+    "required": [
+      "data"
+    ]
+  },
+  "ProductType": {
+    "type": "object",
+    "properties": {
+      "version": {
+        "type": "number"
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "productTypeGroupId": {
+        "type": "string"
+      },
+      "subscribable": {
+        "type": "boolean"
+      },
+      "purchaseCode": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "purchaseTypes": {
+        "anyOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "fulfillmentType": {
+        "type": [
+          "null",
+          "string"
+        ]
+      },
+      "jsonSchema": {},
+      "available": {
+        "type": "boolean"
+      },
+      "meta": {
+        "type": "object",
+        "properties": {
+          "globalAvailability": {
+            "description": "Are the products default available",
+            "default": false,
+            "type": "boolean"
+          },
+          "telemetry": {
+            "description": "Do orders for this productType have telemetry logs",
+            "default": false,
+            "type": "boolean"
+          },
+          "displayName": {
+            "description": "Display friendly name for productType (e.g. \"TV Episode\")",
+            "type": "string"
+          },
+          "autoIngest": {
+            "description": "Are the products ingested automatically",
+            "default": false,
+            "type": "boolean"
+          },
+          "restrictedAccess": {
+            "description": "if restrictedAccess equals to true edit action requires VP approval",
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "autoIngest",
+          "displayName",
+          "globalAvailability",
+          "telemetry"
+        ]
+      },
+      "cdate": {
+        "type": "string"
+      },
+      "udate": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "available",
+      "cdate",
+      "fulfillmentType",
+      "jsonSchema",
+      "productTypeGroupId",
+      "productTypeId",
+      "purchaseCode",
+      "purchaseTypes",
+      "subscribable",
+      "udate",
+      "version"
+    ]
+  },
+  "ProductTypeMeta": {
+    "type": "object",
+    "properties": {
+      "globalAvailability": {
+        "description": "Are the products default available",
+        "default": false,
+        "type": "boolean"
+      },
+      "telemetry": {
+        "description": "Do orders for this productType have telemetry logs",
+        "default": false,
+        "type": "boolean"
+      },
+      "displayName": {
+        "description": "Display friendly name for productType (e.g. \"TV Episode\")",
+        "type": "string"
+      },
+      "autoIngest": {
+        "description": "Are the products ingested automatically",
+        "default": false,
+        "type": "boolean"
+      },
+      "restrictedAccess": {
+        "description": "if restrictedAccess equals to true edit action requires VP approval",
+        "default": false,
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "autoIngest",
+      "displayName",
+      "globalAvailability",
+      "telemetry"
+    ]
+  },
+  "PurchaseToken": {
+    "type": "object",
+    "properties": {
+      "customerId": {
+        "type": "string"
+      },
+      "siteId": {
+        "type": "string"
+      },
+      "inmateId": {
+        "type": "string"
+      },
+      "custodyAccount": {
+        "type": "string"
+      },
+      "callPartyId": {
+        "type": "string"
+      },
+      "purchaseType": {
+        "type": "string"
+      },
+      "purchaseCode": {
+        "type": "string"
+      },
+      "product": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "number"
+          },
+          "price": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "productType": {
+            "type": "string"
+          },
+          "productTypeGroupId": {
+            "type": "string"
+          },
+          "priceDetail": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "number"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "fee",
+                    "price"
+                  ]
+                }
+              },
+              "required": [
+                "amount",
+                "name",
+                "type"
+              ]
+            }
+          },
+          "version": {
+            "type": "number"
+          },
+          "fulfillmentType": {
+            "type": "string"
+          },
+          "billingInterval": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "number"
+              },
+              "interval": {
+                "type": "string",
+                "enum": [
+                  "days",
+                  "weeks",
+                  "months"
+                ]
+              }
+            },
+            "required": [
+              "count",
+              "interval"
+            ]
+          },
+          "includedProductIds": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "required": [
+          "description",
+          "name",
+          "price",
+          "priceDetail",
+          "productId",
+          "productType",
+          "productTypeGroupId",
+          "thumbnail",
+          "version"
+        ]
+      }
+    },
+    "required": [
+      "customerId",
+      "product",
+      "purchaseCode",
+      "purchaseType",
+      "siteId"
+    ]
+  },
+  "PurchaseProduct": {
+    "type": "object",
+    "properties": {
+      "productId": {
+        "type": "number"
+      },
+      "price": {
+        "type": "number"
+      },
+      "name": {
+        "type": "string"
+      },
+      "description": {
+        "type": "string"
+      },
+      "thumbnail": {
+        "type": "string"
+      },
+      "productType": {
+        "type": "string"
+      },
+      "productTypeGroupId": {
+        "type": "string"
+      },
+      "priceDetail": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "amount": {
+              "type": "number"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "fee",
+                "price"
+              ]
+            }
+          },
+          "required": [
+            "amount",
+            "name",
+            "type"
+          ]
+        }
+      },
+      "version": {
+        "type": "number"
+      },
+      "fulfillmentType": {
+        "type": "string"
+      },
+      "billingInterval": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "number"
+          },
+          "interval": {
+            "type": "string",
+            "enum": [
+              "days",
+              "weeks",
+              "months"
+            ]
+          }
+        },
+        "required": [
+          "count",
+          "interval"
+        ]
+      },
+      "includedProductIds": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      }
+    },
+    "required": [
+      "description",
+      "name",
+      "price",
+      "priceDetail",
+      "productId",
+      "productType",
+      "productTypeGroupId",
+      "thumbnail",
+      "version"
+    ]
+  },
+  "CDNFailureMessage": {
+    "type": "object",
+    "properties": {
+      "vendorName": {
+        "type": "string",
+        "enum": [
+          "Audible Magic",
+          "swank"
+        ]
+      },
+      "vendorProductId": {
+        "type": "string"
+      },
+      "productTypeId": {
+        "type": "string"
+      },
+      "error": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "error",
+      "productTypeId",
+      "vendorName",
+      "vendorProductId"
+    ]
+  },
+  "CidnFulfillmentRequestFields": {
+    "type": "object",
+    "properties": {
+      "vendor": {
+        "type": "string",
+        "enum": [
+          "Audible Magic",
+          "swank"
+        ]
+      },
+      "customerId": {
+        "type": "string"
+      },
+      "transactionId": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "customerId",
+      "transactionId",
+      "vendor"
+    ]
+  },
+  "CidnContentToDeliver": {
+    "type": "object",
+    "properties": {
+      "fullContentS3Path": {
+        "type": "string"
+      },
+      "s3Path": {
+        "type": "string"
+      },
+      "vendorProductId": {
+        "type": "string"
+      },
+      "fileName": {
+        "type": "string"
+      },
+      "error": {
+        "type": "string"
+      },
+      "productTypeId": {
+        "type": "string"
+      }
+    }
+  },
+  "CidnMusicSharedOutput": {
+    "type": "object",
+    "properties": {
+      "contentToDeliver": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "fullContentS3Path": {
+              "type": "string"
+            },
+            "s3Path": {
+              "type": "string"
+            },
+            "vendorProductId": {
+              "type": "string"
+            },
+            "fileName": {
+              "type": "string"
+            },
+            "error": {
+              "type": "string"
+            },
+            "productTypeId": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "vendor": {
+        "type": "string",
+        "enum": [
+          "Audible Magic",
+          "swank"
+        ]
+      },
+      "customerId": {
+        "type": "string"
+      },
+      "transactionId": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "contentToDeliver",
+      "customerId",
+      "transactionId",
+      "vendor"
+    ]
+  },
+  "FutureProductChangesMessage": {
+    "type": "object",
+    "properties": {
+      "futureProductChanges": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "futureProductChangeId": {
+              "type": "number"
+            },
+            "productId": {
+              "type": "number"
+            },
+            "productTypeId": {
+              "type": "string"
+            },
+            "vendorProductId": {
+              "type": "string"
+            },
+            "actionDate": {
+              "type": "string"
+            },
+            "vendorName": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "error": {
+              "type": "string"
+            },
+            "version": {
+              "type": "number"
+            },
+            "cdate": {
+              "type": "string"
+            },
+            "udate": {
+              "type": "string"
+            },
+            "ingestionBatchId": {
+              "type": "string"
+            },
+            "action": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "object",
+                  "additionalProperties": {}
+                },
+                "meta": {
+                  "type": "object",
+                  "additionalProperties": {}
+                }
+              }
+            }
+          },
+          "required": [
+            "action",
+            "actionDate",
+            "futureProductChangeId",
+            "productTypeId",
+            "state",
+            "vendorName",
+            "vendorProductId"
+          ]
+        }
+      }
+    },
+    "required": [
+      "futureProductChanges"
+    ]
+  },
+  "ProductMessage": {
+    "type": "object",
+    "additionalProperties": {},
+    "properties": {
+      "product": {
+        "type": "object",
+        "additionalProperties": {},
+        "properties": {
+          "productId": {
+            "type": "number"
+          },
+          "version": {
+            "type": "number"
+          },
+          "cdate": {
+            "type": "string"
+          },
+          "udate": {
+            "type": "string"
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": {},
+            "properties": {
+              "vendorProductId": {
+                "type": "string"
+              },
+              "vendorName": {
+                "type": "string"
+              },
+              "vendorParentProductId": {
+                "type": "string"
+              },
+              "vendorArtistId": {
+                "type": "string"
+              },
+              "s3Path": {
+                "type": "string"
+              },
+              "signedUrl": {
+                "type": "string"
+              },
+              "extension": {
+                "enum": [
+                  "mp3",
+                  "mp4"
+                ],
+                "type": "string"
+              },
+              "productTypeId": {
+                "type": "string"
+              },
+              "genres": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "availableForSubscription": {
+                "type": "boolean"
+              },
+              "availableForPurchase": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "productTypeId",
+              "vendorName",
+              "vendorProductId"
+            ]
+          },
+          "productTypeId": {
+            "type": "string"
+          },
+          "productTypeGroupId": {
+            "type": "string"
+          },
+          "childProductIds": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "childProducts": {
+            "type": "array",
+            "items": {}
+          },
+          "purchaseCode": {
+            "type": "string"
+          },
+          "purchaseTypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fulfillmentType": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PendingReview",
+              "Active",
+              "Deleted",
+              "Reingest",
+              "Inactive"
+            ]
+          },
+          "meta": {
+            "type": "object",
+            "additionalProperties": {},
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "thumbnail": {
+                "type": "string"
+              },
+              "thumbnailApproved": {
+                "enum": [
+                  "approved",
+                  "blocked",
+                  "escalated",
+                  "pending"
+                ],
+                "type": "string"
+              },
+              "startDate": {
+                "type": "string"
+              },
+              "endDate": {
+                "type": "string"
+              },
+              "billingInterval": {
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "number"
+                  },
+                  "interval": {
+                    "type": "string",
+                    "enum": [
+                      "days",
+                      "weeks",
+                      "months"
+                    ]
+                  }
+                },
+                "required": [
+                  "count",
+                  "interval"
+                ]
+              },
+              "genres": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "name"
+            ]
+          },
+          "subscribable": {
+            "type": "boolean"
+          },
+          "isBlocked": {
+            "type": "boolean"
+          },
+          "isManuallyBlocked": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "cdate",
+          "meta",
+          "productId",
+          "productTypeGroupId",
+          "productTypeId",
+          "source",
+          "status",
+          "udate"
+        ]
+      }
+    },
+    "required": [
+      "product"
+    ]
+  }
+}
