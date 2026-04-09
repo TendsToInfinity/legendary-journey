@@ -1,0 +1,23 @@
+node_modules/
+.idea/
+dist/
+coverage/
+.nyc_output/
+config/local*.json
+docker-compose.override.yml
+reports/
+.stryker-tmp/
+ts-node-*/
+db/schema/03-seed.sql
+npm-debug.log
+xunit.xml
+.env
+
+# Yarn
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+yarn-error.log

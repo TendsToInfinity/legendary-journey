@@ -1,0 +1,23 @@
+{
+    "testRunner": "mocha",
+    "packageManager": "yarn",
+    "reporters": ["progress", "clear-text", "html"],
+    "coverageAnalysis": "perTest",
+    "ignoreStatic": true,
+    "incremental": true,
+    "tsconfigFile": "tsconfig.json",
+    "plugins": ["@stryker-mutator/mocha-runner"],
+    "mochaOptions": {
+      "require": ["ts-node/register/transpile-only"],
+      "grep": "^(?!.*@slow)"
+    },
+    "mutate": [
+      "packages/*/src/**/*.ts",
+      "!packages/iac/**",
+      "!packages/catalog/src/main.ts",
+      "!packages/catalog/src/CatalogService.ts",
+      "!packages/catalog/src/**/models/**/*.ts"
+    ],
+    "disableTypeChecks": "**/*.ts",
+    "thresholds": {"high": 100, "low": 90, "break": 85}
+}

@@ -1,0 +1,118 @@
+{
+    "elastic": "http://elasticsearch:9200",
+    "listenPort": 7259,
+    "log": {
+        "level": "error",
+        "format": "simple",
+        "colorize": true
+    },
+    "security": {
+        "jwt": {
+            "publicKey": "./public.pem",
+            "issuerUrls": [
+                "https://sva-openid.dev.aws.cloud.stqlp.org"
+            ],
+            "discoveryTTL": 3600
+        },
+        "apiKey": {
+            "keys": [
+                "API_KEY_DEV"
+            ]
+        }
+    },
+    "signedData": {
+        "privateKey": "./private.pem",
+        "publicKey": "./public.pem",
+        "jwtExpiry": "1h"
+    },
+    "postgres": {
+        "host": "pgbouncer",
+        "port": 5432,
+        "user": "postgres",
+        "password": "password",
+        "database": "catalog"
+    },
+    "rmq": {
+        "host": "mock.rabbit",
+        "virtualHost": "",
+        "user": "guest",
+        "password": "guest"
+    },
+    "apm": {
+        "server": "http://apm:8200"
+    },
+    "inmateService": {
+        "baseUrl": "http://services.inmate:8080",
+        "apiKey": "API_KEY_DEV"
+    },
+    "eligibilityService": {
+        "baseUrl": "http://services.eligibility:8080",
+        "apiKey": "API_KEY_DEV"
+    },
+    "features": {
+        "eligibility": false,
+        "eligibilityByInmateService": false
+    },
+    "allowTestApis": true,
+    "cidnFulfillmentService": {
+        "cloudFrontKey": "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEArG9/3DhT6kmd7dRXHGVqMMaBHvhNDqzPrbxyF8X5xVP29a1N\nv7HH0oghaQ0peFjUeSD47HRjg55ZVZWBR4TgFP8LRtmecsKdozMfhBInWkfgegkW\n5b/Oeik1qXhmgSOoFQS3QOz9WFwSX4L+tbnIUJKrewakop2CPkKBXZciT+no4Gh+\nOxQoPEbBa7ev0vSAEkpeUt/byFI6Mq/kEequeFQVTzMoGMKJM5IgBkG4DiDb8psp\nkI7CkYFJaYAScMosZTvX+q9GvD1AWXFM8aaZ2uk/P1b33bKeIpZn76Q9+ketner/\nMkufCL1cuyTIuXgfwCan8M4smZhnuPoDuLM6JQIDAQABAoIBAG7s3zSca6cIqnan\nJU6YEsLDv6Zblr58/rBFzKNscOu2wuRyEtThGaledxesJuRLSIuPYXJCwQ2XXOKI\nZXzLhpcbJnbyYVJzzZKBvaFpSDV0jXwTws4TIFFHl0SotlAWzvaObRBwI92mhQ86\nJn5iv/DNGVDwChKt/m3svGmnYqRCx2aGjrDdZy6/ShLiqtjDj+ySbOQB2HYSjTLb\nDUuB34cM07uCox0sImBXzmWeY4KPnkiTZPJMSa0ur399RsAIZ0gTdphrdizhBtqk\n7v8xlEc8rn1SrOA9VaY57vX6eS91H2JlLROS/V8QpNMip1i3PqRwkwLjWMErFJzl\noOmRwuECgYEA2BqSXXofbI4oO4ntItZ16pGB5pv2iZoZzKUXHyO4cFpyEJx11n0A\nAwOAyl4vI/zciJ1xVzGmmxMiU+L1HPHv+DjM1PWZqLGWw92MULIDHdPr4sGY56QN\ncmOGDqk37llsnURG6TBUXbvrn26mXa3mZQeVJXwq8Yb0xjutZ+EU6K0CgYEAzEUX\nxIUPCa7xM2bMophGi4szcI189XhNQpuRRnK6aaMTVqc/ozuXlX413FrMZQByLAUN\n2xrAIEuP7XqQSfiFZyWuzxD/czS0nKggQ8wRa3HyUUmwqrKaZ8wofakZwHHyGlql\nQtjAyY4SVKUY4ZE0KO8ppadVKXjotcbn1bjEblkCgYEA1je44Uq+vbhJb4Ow+zjG\nWMj2kOgHwq1sZ607N1YMbetqaMcAFKeCjHo7f99PMYhmAFK52KpSMiUMgUVYnuHB\ndDix62SudkfcYLpMbm2Xo0jA6t3oOa8o2TyI1h2uYOpqPZdCB8QtzWEMF9Xyuqg4\n2+thUHA+jX+vQpZDtdasCF0CgYAqAx/jTFaOcEutfbwiyNzhgGzA/miv9+E0DNjx\nO1F5vo+Qp+9fvDbuCTo8qvQU5eWVhiiWYscXHVNpzWZ1wEZ3s3ljnyRa5oErIy0X\npJYEmjfzXguW4Ar/xC6jwa7JNOZNY01QFVJ5Yd4FSLt4USwAK0hOiL7sO7DpChLO\nkyTbaQKBgQDJNLGkP1qcFWQDm2NxWAuCmhiwt6L1FTcSM9P/s4qPFa3MOA9Ui34J\nF0pgNQY+6YM5m1Zxlddpgr3YMBd6jZKFs00OlZROLhEBLNxzRDo1ZxGB4nMkOse7\neF4ZyMRKEpri7bGYqYx/5ispaFixjtwZWTtc+A7EXe1U5vzCWoYqJA==\n-----END RSA PRIVATE KEY-----",
+        "cloudFrontPublicKeyId": "WHEREVER",
+        "urlExpiresHours": "1",
+        "cloudFrontDistribution": "fake.host.name",
+        "cloudFrontArtUrl": "fake.host.name",
+        "cloudFrontArtSubfolder": "defaultArt",
+        "enabled": true
+    },
+    "ebook": {
+        "cloudFrontKey": "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEArG9/3DhT6kmd7dRXHGVqMMaBHvhNDqzPrbxyF8X5xVP29a1N\nv7HH0oghaQ0peFjUeSD47HRjg55ZVZWBR4TgFP8LRtmecsKdozMfhBInWkfgegkW\n5b/Oeik1qXhmgSOoFQS3QOz9WFwSX4L+tbnIUJKrewakop2CPkKBXZciT+no4Gh+\nOxQoPEbBa7ev0vSAEkpeUt/byFI6Mq/kEequeFQVTzMoGMKJM5IgBkG4DiDb8psp\nkI7CkYFJaYAScMosZTvX+q9GvD1AWXFM8aaZ2uk/P1b33bKeIpZn76Q9+ketner/\nMkufCL1cuyTIuXgfwCan8M4smZhnuPoDuLM6JQIDAQABAoIBAG7s3zSca6cIqnan\nJU6YEsLDv6Zblr58/rBFzKNscOu2wuRyEtThGaledxesJuRLSIuPYXJCwQ2XXOKI\nZXzLhpcbJnbyYVJzzZKBvaFpSDV0jXwTws4TIFFHl0SotlAWzvaObRBwI92mhQ86\nJn5iv/DNGVDwChKt/m3svGmnYqRCx2aGjrDdZy6/ShLiqtjDj+ySbOQB2HYSjTLb\nDUuB34cM07uCox0sImBXzmWeY4KPnkiTZPJMSa0ur399RsAIZ0gTdphrdizhBtqk\n7v8xlEc8rn1SrOA9VaY57vX6eS91H2JlLROS/V8QpNMip1i3PqRwkwLjWMErFJzl\noOmRwuECgYEA2BqSXXofbI4oO4ntItZ16pGB5pv2iZoZzKUXHyO4cFpyEJx11n0A\nAwOAyl4vI/zciJ1xVzGmmxMiU+L1HPHv+DjM1PWZqLGWw92MULIDHdPr4sGY56QN\ncmOGDqk37llsnURG6TBUXbvrn26mXa3mZQeVJXwq8Yb0xjutZ+EU6K0CgYEAzEUX\nxIUPCa7xM2bMophGi4szcI189XhNQpuRRnK6aaMTVqc/ozuXlX413FrMZQByLAUN\n2xrAIEuP7XqQSfiFZyWuzxD/czS0nKggQ8wRa3HyUUmwqrKaZ8wofakZwHHyGlql\nQtjAyY4SVKUY4ZE0KO8ppadVKXjotcbn1bjEblkCgYEA1je44Uq+vbhJb4Ow+zjG\nWMj2kOgHwq1sZ607N1YMbetqaMcAFKeCjHo7f99PMYhmAFK52KpSMiUMgUVYnuHB\ndDix62SudkfcYLpMbm2Xo0jA6t3oOa8o2TyI1h2uYOpqPZdCB8QtzWEMF9Xyuqg4\n2+thUHA+jX+vQpZDtdasCF0CgYAqAx/jTFaOcEutfbwiyNzhgGzA/miv9+E0DNjx\nO1F5vo+Qp+9fvDbuCTo8qvQU5eWVhiiWYscXHVNpzWZ1wEZ3s3ljnyRa5oErIy0X\npJYEmjfzXguW4Ar/xC6jwa7JNOZNY01QFVJ5Yd4FSLt4USwAK0hOiL7sO7DpChLO\nkyTbaQKBgQDJNLGkP1qcFWQDm2NxWAuCmhiwt6L1FTcSM9P/s4qPFa3MOA9Ui34J\nF0pgNQY+6YM5m1Zxlddpgr3YMBd6jZKFs00OlZROLhEBLNxzRDo1ZxGB4nMkOse7\neF4ZyMRKEpri7bGYqYx/5ispaFixjtwZWTtc+A7EXe1U5vzCWoYqJA==\n-----END RSA PRIVATE KEY-----",
+        "cloudFrontPublicKeyId": "WHEREVER",
+        "urlExpiresHours": "1",
+        "cloudFrontDistribution": "fake.host.name",
+        "cloudFrontUrl": "fake.art.host.name",
+        "cloudFrontSubfolder": "defaultArt"
+    },
+    "blocklistEndpoint": {
+        "enabled": false,
+        "baseUrl": "https://execute-api.blocklist.aws.com",
+        "blocklistActionEndpoint": "prod/blocklist/action",
+        "blocklistProductEndpoint": "prod/blocklist/product"
+    },
+    "cidnArtApprovalEndpoint": {
+        "enabled": true,
+        "baseUrl": "https://artapproval-api",
+        "artApprovalEndpoint": "prod/art-approval"
+    },
+    "catalogLocalMedia": {
+        "catalogUseLocalMedia": false
+    },
+    "cache": {
+        "tier1": {
+            "secondsToLive": 60
+        },
+        "tier3": {
+            "hosts": [
+                {
+                    "url": "catalog.memcache",
+                    "port": 11211
+                }
+            ],
+            "secondsToLive": 60
+        },
+        "ttlShort": 60,
+        "ttlMedium": 600,
+        "ttlLong": 3600
+    },
+    "openSearch": {
+        "host": "http://catalog.opensearch:9200",
+        "user": "admin",
+        "pass": "admin"
+    },
+    "sqsConfig": {
+        "queueName": "test-queue",
+        "sqsEnabled": false
+    },
+    "autoReviewV2DateSwitch": "2021-09-01",
+    "autoReview": {
+        "concurrency": 100
+    }
+}

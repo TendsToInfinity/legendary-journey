@@ -1,0 +1,10 @@
+{
+    "mocha.files.glob": "test/**/*.spec.ts",
+    "mocha.env": {
+        "NODE_ENV": "vscode"
+    },
+    "mocha.requires": [
+        "ts-node/register/type-check"
+    ],
+    "mocha.logVerbose": true
+}
