@@ -1,0 +1,7 @@
+extends:
+  - '@securustablets/libraries.commitlint-config'
+rules:
+  subject-case:
+    - 1
+    - never
+    - ['sentence-case', 'start-case', 'pascal-case', 'upper-case']

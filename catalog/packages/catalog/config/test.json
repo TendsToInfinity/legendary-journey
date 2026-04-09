@@ -1,0 +1,20 @@
+{
+  "elastic": "http://elasticsearch:9200",
+  "log": {
+    "level": "error"
+  },
+  "security": {
+    "jwt": {
+      "privateKey": "./private.pem"
+    }
+  },
+  "apm": {
+    "server": ""
+  },
+  "inmateService": {
+    "apiKey": "API_KEY_DEV"
+  },
+  "eligibilityService": {
+    "apiKey": "API_KEY_DEV"
+  }
+}

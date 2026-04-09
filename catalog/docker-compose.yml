@@ -1,0 +1,205 @@
+services:
+  services.catalog:
+    build:
+      context: .
+      dockerfile: packages/catalog/Dockerfile
+      target: test
+    depends_on:
+      - elasticsearch
+      - catalog.postgres
+      - mock.rabbit
+      - apm
+      - services.eligibility
+      - pgbouncer
+      - catalog.opensearch
+      - catalog.memcache
+      - aws.localstack
+    environment:
+      WAIT_HOSTS: catalog.postgres:5432, elasticsearch:9200, apm:8200, mock.rabbit:5672, services.eligibility:8080, pgbouncer:5432, catalog.memcache:11211, aws.localstack:4566
+      WAIT_HOSTS_TIMEOUT: 300
+      AWS_ACCESS_KEY_ID: "test"
+      AWS_SECRET_ACCESS_KEY: "test"
+      AWS_REGION: "us-east-1"
+      AWS_SQS_ENDPOINT: "http://aws.localstack:4566"
+      AWS_SESSION_TOKEN: "test"
+    dns:
+      # Set the DNS server to be the LocalStack container
+      - 10.0.2.20
+    networks:
+      - ls
+  services.eligibility:
+    image: mi-nexus02.dal.securustech.net:8080/services.eligibility
+    command:
+      ["/bin/bash", "-c", "/wait && npm run db:init && node dist/src/main.js"]
+    expose:
+      - 8080
+    depends_on:
+      - apm
+      - eligibility.postgres
+      - services.inmate
+      - pgbouncer
+    environment:
+      WAIT_HOSTS: eligibility.postgres:5432, apm:8200, services.inmate:8080, pgbouncer:5432
+      WAIT_HOSTS_TIMEOUT: 180
+    networks:
+      - ls
+  services.inmate:
+    image: mi-nexus02.dal.securustech.net:8080/services.inmate/inmate-task
+    command:
+      ["/bin/bash", "-c", "/wait && npm run db:init && node dist/src/main.js"]
+    expose:
+      - 8080
+    depends_on:
+      - inmate.postgres
+      - mock.rabbit
+      - pgbouncer
+    environment:
+      WAIT_HOSTS: inmate.postgres:5432, mock.rabbit:5672, pgbouncer:5432
+      WAIT_HOSTS_TIMEOUT: 120
+      ELASTIC_APM_ACTIVE: false
+      NODE_CONFIG: >
+        {
+          "listenPort": 8080,
+          "log": {
+            "level": "garbage",
+            "format": "simple",
+            "colorize": true
+          },
+          "security": {
+            "jwt": {
+              "publicKey": "./public.pem",
+              "issuerUrls": ["https://sva-openid.dev.aws.cloud.stqlp.org"],
+              "discoveryTTL": 3600
+            },
+            "apiKey": {
+              "keys": ["API_KEY_DEV"]
+            }
+          },
+          "postgres": {
+            "host": "pgbouncer",
+            "port": 5432,
+            "user": "postgres",
+            "password": "password",
+            "database": "inmate"
+          },
+          "rmq": {
+            "hosts": [
+              "amqp://guest:guest@mock.rabbit"
+            ]
+          },
+          "cache": {
+            "local": {
+              "secondsToLive": 600
+            },
+            "ttlMedium": 600,
+            "ttlLong": 3600
+          }
+        }
+    networks:
+      - ls
+  elasticsearch:
+    image: elasticsearch:2.3.5
+    networks:
+      - ls
+  catalog.postgres:
+    image: postgres:12.13
+    environment:
+      POSTGRES_DB: catalog
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    networks:
+      - ls
+  eligibility.postgres:
+    image: postgres:13.8
+    environment:
+      POSTGRES_DB: eligibility
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    networks:
+      - ls
+  inmate.postgres:
+    image: postgres:14.6
+    environment:
+      POSTGRES_DB: inmate
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    networks:
+      - ls
+  pgbouncer:
+    image: edoburu/pgbouncer:1.21.0-p2
+    environment:
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+      - POOL_MODE=transaction
+    volumes:
+      - ./packages/catalog/config/pgbouncer.ini:/etc/pgbouncer/pgbouncer.ini:ro
+    expose:
+      - 5432
+    depends_on:
+      - eligibility.postgres
+      - inmate.postgres
+      - catalog.postgres
+    networks:
+      - ls
+  mock.rabbit:
+    image: rabbitmq:4.0.9-management
+    expose:
+      - 15672
+      - 5672
+    command: bash -c "echo 'loopback_users = none' > /etc/rabbitmq/rabbitmq.conf; sleep 10; rabbitmq-server;"
+    networks:
+      - ls
+  apm:
+    image: docker.elastic.co/apm/apm-server:6.8.4
+    depends_on:
+      - elasticsearch
+    networks:
+      - ls
+  catalog.opensearch: # This is also the hostname of the container within the Docker network (i.e. https://opensearch-node1/)
+    image: opensearchproject/opensearch:2.17.0 # Specifying the latest available image - modify if you want a specific version
+    environment:
+      - cluster.name=opensearch-cluster # Name the cluster
+      - node.name=opensearch-node1 # Name the node that will run in this container
+      - discovery.seed_hosts=opensearch-node1 # Nodes to look for when discovering the cluster
+      - cluster.initial_cluster_manager_nodes=opensearch-node1 # Nodes eligible to serve as cluster manager
+      - bootstrap.memory_lock=true # Disable JVM heap memory swapping
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m" # Set min and max JVM heap sizes to at least 50% of system RAM
+      - "DISABLE_SECURITY_PLUGIN=true" # Disables security plugin
+    ulimits:
+      memlock:
+        soft: -1 # Set memlock to unlimited (no soft or hard limit)
+        hard: -1
+      nofile:
+        soft: 65536 # Maximum number of open files for the opensearch user - set to at least 65536
+        hard: 65536
+    networks:
+      - ls
+
+  catalog.memcache:
+    image: memcached:latest
+    networks:
+      - ls
+
+  aws.localstack:
+    image: localstack/localstack:4.14.0
+    ports:
+      - "4566:4566" # LocalStack edge port
+    environment:
+      - SERVICES=sqs,s3 # Specify which services to start
+      - GATEWAY_LISTEN=4566
+      - AWS_DEFAULT_REGION=us-east-1
+      - LOCALSTACK_HOST=aws.localstack
+    networks:
+      ls:
+        # Set the container IP address in the 10.0.2.0/24 subnet
+        ipv4_address: 10.0.2.20
+    # add test-queue to localstack
+    volumes:
+      - ./packages/catalog/config/local_aws_bootstrap.sh:/etc/localstack/init/ready.d/local_aws_bootstrap.sh
+
+networks:
+  ls:
+    ipam:
+      config:
+        # Specify the subnet range for IP address allocation
+        - subnet: 10.0.2.0/24

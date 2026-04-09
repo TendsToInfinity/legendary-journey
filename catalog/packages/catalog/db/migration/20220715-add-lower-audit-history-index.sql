@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS entity_lower_idx  ON audit_history USING btree (lower(entity_id), lower(entity_type));

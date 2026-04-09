@@ -1,0 +1,20 @@
+plugins:
+  - name: catalog-zip
+    module: "@securustablets/libraries.semantic-release-plugins/yarn-workspace-s3zip"
+    args:
+      workspace: services.catalog
+      inputDir: .
+  - name: catalog-task-image
+    module: "@securustablets/libraries.semantic-release-plugins/yarn-workspace-ecr"
+    args:
+      workspace: catalog-task
+    matrix:
+      platform: [amd64, arm64]
+  - name: catalog-task-image-index
+    module: "@securustablets/libraries.semantic-release-plugins/yarn-workspace-ecr-index"
+    args:
+      workspace: catalog-task
+      platforms: [amd64, arm64]
+    needs: [catalog-task-image]
+  - name: s3release
+    module: "@securustablets/libraries.semantic-release-plugins/s3release"

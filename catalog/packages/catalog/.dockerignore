@@ -1,0 +1,12 @@
+.nyc_output/
+coverage/
+reports/
+node_modules
+.git
+.idea/
+dist/
+.stryker-tmp/
+ts-node-*/
+.nyc_output/
+config/local*.json
+docker-compose.*

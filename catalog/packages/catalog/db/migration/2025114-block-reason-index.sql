@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS block_reason_product_id_idx ON block_reason (product_id);
