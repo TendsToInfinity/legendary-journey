@@ -25,6 +25,9 @@ import { Paginated } from './models/Paginated';
 export class OpenSearchManager {
   private static readonly MAX_RESULT_WINDOW = 10000;
 
+export class OpenSearchManager {
+  private static readonly MAX_RESULT_WINDOW = 10000;
+
   @Inject
   private openSearchDao!: OpenSearchDao;
 
