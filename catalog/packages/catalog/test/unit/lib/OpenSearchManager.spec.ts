@@ -54,7 +54,7 @@ describe('OpenSearchManager - Unit', () => {
         ]);
       }
     });
-    it('should throw an error if pageSize * pageNumber > 10000', async () => {
+    it('should throw an error if requested page exceeds OpenSearch result window', async () => {
       const search: Search = {
         pageSize: 5000,
         pageNumber: 3,
