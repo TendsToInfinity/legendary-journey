@@ -1,39 +1,17 @@
-if ((search.pageSize * search.pageNumber) + search.pageSize > 10000) 
+// catalog/packages/catalog/test/unit/lib/OpenSearchManager.spec.ts
 
-
-
-
-private validateSearch(search: Search): void {
-  if (search.query && search.match) {
-    throw Exception.InvalidData({
-      errors: `Cannot search with both 'query' and 'match'.`,
-    });
+it('should throw an error if requested page exceeds OpenSearch result window', async () => {
+  const search: Search = {
+    pageSize: 5000,
+    pageNumber: 3,
+  };
+  try {
+    await openSearchManager.scrollSearch(productTypeId, search);
+    expect.fail();
+  } catch (error) {
+    expect(error.code).to.equal(400);
+    expect(error.errors).to.deep.equal([
+      `Requested page exceeds OpenSearch result window (10,000). Please refine filters or use a scroll-based query.`,
+    ]);
   }
-
-  const pageSize = search.pageSize || 25;
-  const pageNumber = search.pageNumber || 0;
-
-  if (
-    !Number.isFinite(pageSize) ||
-    !Number.isFinite(pageNumber) ||
-    !Number.isInteger(pageSize) ||
-    !Number.isInteger(pageNumber) ||
-    pageSize <= 0 ||
-    pageNumber < 0
-  ) {
-    throw Exception.InvalidData({
-      errors:
-        'Invalid pagination values. pageSize/pageNumber must be finite integers, with pageSize > 0 and pageNumber >= 0.',
-    });
-  }
-
-  const from = pageSize * pageNumber;
-  const resultWindow = from + pageSize;
-
-  if (resultWindow > OpenSearchManager.MAX_RESULT_WINDOW) {
-    throw Exception.InvalidData({
-      errors:
-        `Requested page exceeds OpenSearch result window (${OpenSearchManager.MAX_RESULT_WINDOW.toLocaleString()}). Please refine filters or use a scroll-based query.`,
-    });
-  }
-}
+});
