@@ -91,8 +91,7 @@ export class OpenSearchManager {
 
     if (resultWindow > OpenSearchManager.MAX_RESULT_WINDOW) {
       throw Exception.InvalidData({
-        errors:
-          `Requested page exceeds OpenSearch result window (${OpenSearchManager.MAX_RESULT_WINDOW.toLocaleString()}). Please refine filters or use a scroll-based query.`,
+        errors: 'Too many records requested. Please refine your search criteria.',
       });
     }
   }
