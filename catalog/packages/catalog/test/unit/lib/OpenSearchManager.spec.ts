@@ -65,7 +65,7 @@ describe('OpenSearchManager - Unit', () => {
       } catch (error) {
         expect(error.code).to.equal(400);
         expect(error.errors).to.deep.equal([
-          `Requested page exceeds OpenSearch result window (10,000). Please refine filters or use a scroll-based query.`,
+          `Too many records requested. Please refine your search criteria.`,
         ]);
       }
     });
