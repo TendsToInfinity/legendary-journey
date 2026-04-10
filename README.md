@@ -1,14 +1,28 @@
-22:23:19 (30) ERROR DryRunExecutor One or more tests failed in the initial test run:
-	OpenSearchManager - Unit validateSearch should throw an error if requested page exceeds OpenSearch result window
-		expected [ Array(1) ] to deeply equal [ Array(1) ]
-22:23:19 (30) ERROR Stryker There were failed tests in the initial test run.
+Last release appears to be: v15.0.1
+Found 5 commits (v15.0.1..HEAD)
+⧗   input: feat:fix pagination adding message[TP-27865]
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+⧗   input: TP-27865 fix pagination reverting unit test
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+⧗   input: TP-27865 fix pagination unit test
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+⧗   input: TP-27865 fix pagination unit test
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+⧗   input: TP-27865 fix pagination issue
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+✖   found 2 problems, 0 warnings
+✖ FAILURE
 
-     22:23:14 (30) INFO ConcurrencyTokenProvider Creating 7 test runner process(es).
-22:23:14 (30) INFO BroadcastReporter Detected that current console does not support the "progress" reporter, downgrading to "progress-append-only" reporter
-22:23:15 (30) INFO DryRunExecutor Starting initial test run (mocha test runner with "perTest" coverage analysis). This may take a while.
-22:23:19 (30) ERROR DryRunExecutor One or more tests failed in the initial test run:
-	OpenSearchManager - Unit validateSearch should throw an error if requested page exceeds OpenSearch result window
-		expected [ Array(1) ] to deeply equal [ Array(1) ]
-22:23:19 (30) ERROR Stryker There were failed tests in the initial test run.
-Cleaning up project directory and file based variables
-ERROR: Job failed: exit code 1
+
+
+previous commit message - 
+feat: pulumi ec2 instance attached fortigate image [TP-22487]
