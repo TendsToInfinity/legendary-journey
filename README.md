@@ -1,10 +1,3 @@
-Found 2 commits (v15.0.1..HEAD)
-⧗   input: feat : pagination issue resolved [TP-27865]
-✖   subject may not be empty [subject-empty]
-✖   type may not be empty [type-empty]
-✖   found 2 problems, 0 warnings
-⧗   input: feat : pagination issue resolved [TP-27865]
-✖   subject may not be empty [subject-empty]
-✖   type may not be empty [type-empty]
-✖   found 2 problems, 0 warnings
-✖ FAILURE
+what we want is to enhance our monitoring so we can get alerts when:
+We max out the number of containers we allow to scale up
+We see errors in the databases being used (opensearch & memcached in this case)
