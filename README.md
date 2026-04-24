@@ -1,3 +1,23 @@
-what we want is to enhance our monitoring so we can get alerts when:
-We max out the number of containers we allow to scale up
-We see errors in the databases being used (opensearch & memcached in this case)
+EC2_ALLOWED_INGRESS_CIDRS:
+  - ports:
+      from: 22
+      to: 22
+    cidrIp: 10.255.104.0/22
+    description: Allow Midway VPN users
+  - ports:
+      from: 22
+      to: 22
+    cidrIp: 10.254.60.0/22
+    description: Allow Atlanta VPN users
+
+EC2_ALLOWED_SECONDARY_INGRESS_CIDRS:
+  - ports:
+      from: 22
+      to: 22
+    cidrIp: 10.255.104.0/22
+    description: Allow Midway VPN users
+  - ports:
+      from: 22
+      to: 22
+    cidrIp: 10.254.60.0/22
+    description: Allow Atlanta VPN users
