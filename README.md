@@ -2,22 +2,34 @@ EC2_ALLOWED_INGRESS_CIDRS:
   - ports:
       from: 22
       to: 22
-    cidrIp: 10.255.104.0/22
-    description: Allow Midway VPN users
+    cidrIp: "10.255.104.0/22"
   - ports:
       from: 22
       to: 22
-    cidrIp: 10.254.60.0/22
-    description: Allow Atlanta VPN users
+    cidrIp: "10.254.60.0/22"
+  - ports:
+      from: 443
+      to: 443
+    cidrIp: "10.254.60.0/22"
+  - ports:
+      from: 443
+      to: 443
+    cidrIp: "10.255.104.0/22"
+  - ports:
+      from: 443
+      to: 443
+    cidrIp: "70.230.122.95/32"
+  - ports:
+      from: 22
+      to: 22
+    cidrIp: "99.33.73.40/32"
 
 EC2_ALLOWED_SECONDARY_INGRESS_CIDRS:
   - ports:
-      from: 22
-      to: 22
-    cidrIp: 10.255.104.0/22
-    description: Allow Midway VPN users
+      from: 443
+      to: 443
+    cidrIp: "10.93.106.249/32"
   - ports:
-      from: 22
-      to: 22
-    cidrIp: 10.254.60.0/22
-    description: Allow Atlanta VPN users
+      from: 0
+      to: 0
+    cidrIp: "10.6.247.21/32"
