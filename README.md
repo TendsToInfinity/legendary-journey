@@ -19,8 +19,8 @@ EC2_ALLOWED_INGRESS_CIDRS:
       from: 22
       to: 22
     cidrIp: "10.254.60.0/22"
-  - ports:
-    EC2_ALLOWED_SECONDARY_INGRESS_CIDRS:
+
+EC2_ALLOWED_SECONDARY_INGRESS_CIDRS:
   - ports:
       from: 4500
       to: 4500
@@ -41,6 +41,3 @@ EC2_ALLOWED_INGRESS_CIDRS:
       from: 500
       to: 500
     cidrIp: "0.0.0.0/0"
-      from: 0
-      to: 0
-    cidrIp: "10.6.247.21/32"
